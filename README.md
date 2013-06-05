@@ -225,7 +225,7 @@ To run the new task, simply add a line containing the new task to the `:run_task
 
 ## Contributing
 
-Pull requests welcome! Please feel free to tidy up my novice Ruby code!
+Pull requests welcome! Feel free to tidy up my R00by (n00b Ruby).
 
 ## Contact
 
