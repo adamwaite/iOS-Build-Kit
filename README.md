@@ -38,11 +38,11 @@ As Mac OSX users and iOS developers it's most likely that the following are inst
 
         $ ruby configure.rb
    This will rename all the the paths, files and project setting to match the given application name, install: xctool, Imagemagick, RMagick, Rake, and finally trash any unecessary files such as this readme.
-5. Provide a name for the project and write your app!
+5. Write your app!
 
 ## Project Structure
 
-In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Convention_over_configuration) approach, and knowing that MVC is central to a good design for a Cocoa application, the application directory structure has been structured to organise application code, tests and assets in a logical structure that maps filesystem directories to groupings inside Xcode.
+In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Convention_over_configuration) approach, and knowing that MVC is central to a good design for a Cocoa application, the application filesystem has been structured to house application code, tests, assets and data in an organised fashion. Filesystem directories are mapped to Xcode groups, no more messy project folders!
 
     ├── <AppName>
     	  ├── <AppName>
