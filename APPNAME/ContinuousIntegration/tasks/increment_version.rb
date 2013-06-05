@@ -4,11 +4,10 @@ module ContiniOSIntegration
 		
     # config
     runner = ContiniOSIntegration::CITaskRunner.instance
-    config = runner.config
-    plist_plath = runner.plist_path
-            
+    plist_path = runner.get_config :plist_path
+                
     # pull version from plist file
-    version = %x[/usr/libexec/PlistBuddy -c "Print CFBundleVersion" #{plist_plath}]
+    version = %x[/usr/libexec/PlistBuddy -c "Print CFBundleVersion" #{plist_path}]
     
     # split the version into components
 		split_version = version.split(".").map { |s| s.to_i }
@@ -23,10 +22,10 @@ module ContiniOSIntegration
     new_version = [major, minor, revision, build].join(".")
     
     # save
-    runner.new_version_number = new_version
+    runner.set_config :new_version_number, new_version
 		
     # write the new version to the plist
-    system "/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{new_version}\" #{plist_plath}"
+    system "/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{new_version}\" #{plist_path}"
 	  
     # notify
   	puts "incremented build from #{old_version} to #{new_version}"

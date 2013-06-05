@@ -8,10 +8,6 @@ module ContiniOSIntegration
     runner = ContiniOSIntegration::CITaskRunner.instance
     config = runner.config
             
-    # reference the SVN version number
-    svn_dir = "../"
-    svn_v_number = %x[cd #{svn_dir}; svn info |grep Revision: |cut -c11-]  
-    
     # reference all of the icon files
     icon_dir = "../App/Resources/Assets/Images/Icon/"
 		icon_files = lambda do

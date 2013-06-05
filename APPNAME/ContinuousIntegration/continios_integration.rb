@@ -9,49 +9,71 @@ module ContiniOSIntegration
     
     # require tasks and utilities
     require 'find'
+    require 'pp'
     Dir["./tasks/*.rb"].each {|file| require file }
     
     # accesssors
-    attr_accessor :config, :app_name, :build_dir, :plist_path, :new_version_number, :app_dir, :workspace
+    attr_accessor :config
     
     # initialise with config
   	def init_with_config(attributes = {})
-      @config = YAML.load_file(attributes[:config])
-      puts "Initialised with configuration file: #{attributes[:config]}"
-      @app_name = @config[:options][:app_name]
-      @build_dir = (@config[:options][:build_dir].nil?) ? Dir.getwd + "/builds/" : @config[:options][:build_dir]
-      @app_dir = (@config[:options][:app_dir].nil?) ? "#{app_name}" : @config[:options][:app_dir]
-      @plist_path = lambda do
+      @config = Hash.new 
+      file_config = YAML.load_file(attributes[:config])
+      set_config :tasks, file_config[:run_tasks]
+      set_config :raw_config_file, file_config
+      set_config :app_name, file_config[:options][:app_name]
+      set_config :build_dir, file_config[:options][:build_dir].nil? ? Dir.getwd + "/builds/" : file_config[:options][:build_dir]
+      set_config :app_dir, file_config[:options][:app_dir].nil? ? "#{get_config :app_name}" : file_config[:options][:app_dir]
+      set_config :plist_path, (lambda do
         plist_file_paths = []
-        Find.find("../#{@app_dir}/SupportingFiles/") { |path| plist_file_paths << path if path =~ /.*\.plist$/ }
+        Find.find("../#{get_config :app_dir}/SupportingFiles/") { |path| plist_file_paths << path if path =~ /.*\.plist$/ }
         plist_path = plist_file_paths.first.sub(' ', '\ ')
-      end.call
-      @workspace = lambda do
+      end).call
+      set_config :workspace, (lambda do
         ws_paths = []
         Find.find('../') { |path| ws_paths << path if path =~ /.*\.xcworkspace$/ unless path.include?('xcodeproj') }
         ws_path = ws_paths.first.sub(' ', '\ ')
-      end.call
-      
-      puts "Configuration:"
-      puts self.inspect
-      
+      end).call
+      puts "Build process initialised with configuration: \n\n"
+      dump_config
+    end
+    
+    # config set
+    def set_config key, value
+      @config[key] = value
+    end
+    
+    # config get
+    def get_config key
+      @config[key]
+    end
+    
+    # config debug
+    def dump_config
+      pp @config
     end
         
     # run tasks
     def run_tasks
-      @config[:run_tasks].each do |task, run|
-        puts
+      tasks_to_run = get_config :tasks
+      tasks_to_run.each do |task, run|
         if run
-          puts "Running Task: #{task}"
+          header_msg "Running Task: #{task}"
           ContiniOSIntegration.send task
         else
-          puts "Skipping Task: #{task}"
+          header_msg "Skipping Task: #{task}"
         end
       end
     end
     
+    # decoration
+    def header_msg h
+      puts "\n\n" + h + "\n" + ("-" * h.length) + "\n\n"
+    end
+    
+    # on_completion
     def on_completion
-      puts "Process completed!"
+      header_msg "Process completed!"
     end
     
     # terminate

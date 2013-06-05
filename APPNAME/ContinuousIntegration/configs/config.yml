@@ -15,7 +15,7 @@
 
 # build options:
 :options:
-  :app_name: "App"																																# Name of the Application (REQUIRED)
+  :app_name: "APPNAME"																														# Name of the Application (REQUIRED)
   :scheme:																																				# Scheme to build (defaults to app_name)
   :configuration: "Release"																												# Build configurations (REQUIRED for create_ipa)
   :code_sign: "iPhone Distribution: LBi UK"																				# Code signing identity (REQUIRED for create_ipa)
