@@ -1,120 +1,114 @@
 # Xcode iOS Project Configuration
-===============================
 
 **Features:**
 
-- Clean and organised directory structure mapping filesystem directories to Xcode groups in the workspace.
+- Clean and organised directory structure mapping filesystem directories to Xcode groupings.
 - Pre-configured unit testing target with OCUnit.
-- Highly customisable and extendable continuous integration toolkit containing plug-ins that:
+- Highly customisable and extendable continuous integration toolkit written in Ruby. Existing tasks include:
     - Increment the build number
     - Overlay the build number on the application icon
     - Build the app
     - Run unit tests
     - Generate an .ipa artefact
-- CocoaPods initialised xcworkspace for management of third party dependencies.
+- CocoaPods initialised xcworkspace for management of third party Objective-C dependencies.
 
 ## Prerequisites
 
-As iOS developers it's most likely that the following are all installed anyway, but just in case:
+As Mac OSX users and iOS developers it's most likely that the following are installed anyway, but just in case, ensure installation of:
 
-1. **Xcode's command line tools:** Ensure that Xcode's command line tools are installed (in the download tab of the Xcode preferences menu).
+1. **Xcode's command line tools:** (in the download tab of the Xcode preferences menu).
 
 2. **Homebrew:** Two dependencies are installed with [Homebrew](http://mxcl.github.io/homebrew/) OSX package manager - [Facebook's xctool](https://github.com/facebook/xctool) for human readable CLI output and [ImageMagick](http://www.imagemagick.org) the code driven Photoshop. 
 
-3. **Ruby Gems:** The continuous integration tooling is written in Ruby. [RubyGems](http://rubygems.org) is used to install some Ruby Gems that power the toolkit - RMagick and Rake.
+3. **Ruby Gems:** The continuous integration tooling is written in Ruby. [RubyGems](http://rubygems.org) is required to install some gems that power the toolkit, those being RMagick and Rake.
 
 ## Configuration
 
 1. Fire up a terminal session and create a directory to house your new app:
-$ `mkdir <CoolAppName>`
 
+        $ mkdir <CoolAppName>
 2. Jump into the new directory:
-$ `cd <CoolAppName>`
 
+        $ cd <CoolAppName>
 3. Clone the repo:
-$ `git clone git://thisrepourl`
 
-4. Run configure.rb[^1]:
-$ `ruby configure.rb`
+        $ git clone git@github.com:adamwaite/XcodeProject.git
+4. Run configure.rb:
 
+        $ ruby configure.rb
+   This will rename all the the paths, files and project setting to match the given application name, install: xctool, Imagemagick, RMagick, Rake, and finally trash any unecessary files such as this readme.
 5. Provide a name for the project and write your app!
-
-[^1]:Note:
-configure.rb will:
-1. Rename all the the paths, files and project setting to match the given application name.
-2. Install: xctool, Imagemagick, RMagick, Rake.
-3. Trash this README and associated images.
 
 ## Project Structure
 
-In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Convention_over_configuration) approach, and knowing that MVC is central to a good design for a Cocoa application - the application directory structure has been structured to organise application code, tests and assets in a logical structure that maps filesystem directories to groupings inside Xcode.
+In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Convention_over_configuration) approach, and knowing that MVC is central to a good design for a Cocoa application, the application directory structure has been structured to organise application code, tests and assets in a logical structure that maps filesystem directories to groupings inside Xcode.
 
-├── <AppName>
-	  ├── <AppName>
-    │   ├── AppDelegate.h
-    │   ├── AppDelegate.m
-    │   ├── App
-    │   ├── Build
-    │   ├── Controllers
-    │   │   ├── ViewController.h
-    │   │   └── ViewController.m
-    │   ├── Lib
-    │   │   └── Categories
-    │   ├── Models
-    │   ├── Resources
-    │   │   ├── Assets
-    │   │   │   ├── Images
-    │   │   │   │   ├── Default
-    │   │   │   │   │   ├── Default-568h@2x.png
-    │   │   │   │   │   ├── Default.png
-    │   │   │   │   │   └── Default@2x.png
-    │   │   │   │   └── Icon
-    │   │   │   │       ├── Icon.png
-    │   │   │   │       ├── Icon@2x.png
-    │   │   │   ├── Sound
-    │   │   │   └── Video
-    │   │   └── Data
-    │   ├── SupportingFiles
-    │   │   ├── <AppName>-Info.plist
-    │   │   ├── <AppName>-Prefix.pch
-    │   │   ├── en.lproj
-    │   │   └── main.m
-    │   ├── Vendor
-    │   └── Views
-    │       └── iPhone.storyboard
-    ├── <AppName>.xcworkspace
+    ├── <AppName>
+    	  ├── <AppName>
+        │   ├── AppDelegate.h
+        │   ├── AppDelegate.m
+        │   ├── App
+        │   ├── Build
+        │   ├── Controllers
+        │   │   ├── ViewController.h
+        │   │   └── ViewController.m
+        │   ├── Lib
+        │   │   └── Categories
+        │   ├── Models
+        │   ├── Resources
+        │   │   ├── Assets
+        │   │   │   ├── Images
+        │   │   │   │   ├── Default
+        │   │   │   │   │   ├── Default-568h@2x.png
+        │   │   │   │   │   ├── Default.png
+        │   │   │   │   │   └── Default@2x.png
+        │   │   │   │   └── Icon
+        │   │   │   │       ├── Icon.png
+        │   │   │   │       ├── Icon@2x.png
+        │   │   │   ├── Sound
+        │   │   │   └── Video
+        │   │   └── Data
+        │   ├── SupportingFiles
+        │   │   ├── <AppName>-Info.plist
+        │   │   ├── <AppName>-Prefix.pch
+        │   │   ├── en.lproj
+        │   │   └── main.m
+        │   ├── Vendor
+        │   └── Views
+        │       └── iPhone.storyboard
+        ├── <AppName>.xcworkspace
     ├── <AppName>.xcodeproj
-    ├── <AppName>Tests
-    │   ├── <AppName>
-    │   ├── <AppName>Tests.h
-    │   ├── <AppName>Tests.m
-    │   ├── Controllers
-    │   │   ├── ViewControllerTests.h
-    │   │   └── ViewControllerTests.m
-    │   ├── Models
-    │   ├── SupportingFiles
-    │   │   ├── <AppName>Tests-Info.plist
-    │   │   └── en.lproj
-    │   └── Views
-    ├── ContinuousIntegration
-    │   ├── Rakefile
-    │   ├── builds
-    │   ├── configs
-    │   │   ├── config.yml
-    │   ├── continios_integration.rb
-    │   └── tasks
-    │       ├── create_ipa.rb
-    │       ├── decorate_icon.rb
-    │       ├── increment_version.rb
-    │       ├── run_tests.rb
-    │       └── xcode_build.rb
-    ├── Podfile
-    ├── Podfile.lock
-    ├── Pods
-    │   ├── Manifest.lock
-    │   └── Pods.xcodeproj
-    │       └── project.pbxproj
-    └── Provisioning
+        ├── <AppName>Tests
+        │   ├── <AppName>
+        │   ├── <AppName>Tests.h
+        │   ├── <AppName>Tests.m
+        │   ├── Controllers
+        │   │   ├── ViewControllerTests.h
+        │   │   └── ViewControllerTests.m
+        │   ├── Models
+        │   ├── SupportingFiles
+        │   │   ├── <AppName>Tests-Info.plist
+        │   │   └── en.lproj
+        │   └── Views
+        ├── ContinuousIntegration
+        │   ├── Rakefile
+        │   ├── builds
+        │   ├── configs
+        │   │   ├── config.yml
+        │   ├── continios_integration.rb
+        │   └── tasks
+        │       ├── create_ipa.rb
+        │       ├── decorate_icon.rb
+        │       ├── increment_version.rb
+        │       ├── run_tests.rb
+        │       └── xcode_build.rb
+        ├── Podfile
+        ├── Podfile.lock
+        ├── Pods
+        │   ├── Manifest.lock
+        │   └── Pods.xcodeproj
+        │       └── project.pbxproj
+        └── Provisioning
 
 ## OCUnit Testing
 
