@@ -10,7 +10,8 @@
     - Build the app
     - Run unit tests
     - Generate an .ipa artefact
-- CocoaPods initialised xcworkspace for management of third party Objective-C dependencies.
+- [CocoaPods](http://cocoapods.org) initialised xcworkspace for management of third party Objective-C dependencies.
+
 
 ## Prerequisites
 
@@ -110,33 +111,37 @@ In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Con
         │       └── project.pbxproj
         └── Provisioning
 
-## OCUnit Testing
+## OCUnit Testing Target
 
-The app project has been configured with a unit-testing target. There are two files in the current structure, a file that tests the stock view controller with one passing test to illustrate the process, and one failing test (default with OCUnit).
+The app project has been configured with a unit-testing target. There is one existing test that compares `YES` to `NO` and fails, just to make sure everything is working as it should!
 
-## CocoaPods Objective-C Dependency Management
+## CocoaPods Dependency Management
 
-The configuration uses CocoaPods for management of Objective-C third party dependencies. The podspec is blank as is, to add dependencies, add pods to the *Podfile*:
+The configuration uses CocoaPods for management of Objective-C dependencies. The *podspec* is blank as is, to add dependencies add pods to the *Podfile*:
 
-`pod 'AFNetworking'`
-`pod 'SocketRocket'`
-`pod 'Kiwi'`
+    pod 'AFNetworking'
+    pod 'SocketRocket'
+    pod 'Kiwi'
 
 and run:
 
-$ `pod install`
+    $ pod install
+    
+For more information [see the CocoaPods getting started guide](http://cocoapods.org)
 
-## Contin_iOS Integration Toolkit
+## ContiniOS Integration Toolkit
 
-The continuous integration and build system tooling is written in Ruby and executed with [Rake](http://rake.rubyforge.org). Options are passed to the Rake process in the form a YAML configuration file that describes the build tasks and further options. 
+**Warning:** This is yet to be used and tested alongside a continuous integration server such as Bamboo or Jenkins and will likely require some tweaking! Expect updates here.
 
-The task structure is modular, new tasks can be added with no disruption of the existing process. Some of the tasks (including the test runner and the xcode_build task) wrap around [Facebook's xctool](https://github.com/facebook/xctool) system for human friendly output.
+The continuous integration and build system tooling is written in Ruby and executed with [Rake](http://rake.rubyforge.org). Options are passed to the Rake process in the form a YAML configuration file that describes the build tasks to be run and any further options. 
+
+The task structure is modular, new tasks can be added with no disruption of the existing process. Some of the tasks (including the test runner and the xcode_build task) wrap around [Facebook's xctool](https://github.com/facebook/xctool) system for human readable output.
 
 **Features**
 
-- Pass different configuration files to Rake to customise build process behaviour
-- Place new task script modules in the task directory to add new functionality to the process
-- Included task modules:
+- Pass different configuration files to Rake to customise build process behaviour.
+- Place new task modules in the *task/* directory to add new build functionality to the process.
+- Included build modules:
 	- increment_version - this increments the build number of the version in the plist
 	- decorate_icon - uses RMagick to overlay the new version number on top of the icon files
 	- xcode_build - build the application
@@ -147,27 +152,27 @@ The task structure is modular, new tasks can be added with no disruption of the 
 
 Configuration files are in YAML format. The files are parsed by Ruby and passed to the system for execution.
 
-All commands under the :run_tasks symbol are executed based on the boolean that follows. For example: `increment_version: true` means that the system will look in the *tasks/* directory and execute the method defined in the `increment_version.rb` file. Setting a task to false will ensure that the tool to skips that task.
+All commands under the `:run_tasks` symbol are executed based on the boolean that follows. For example: `increment_version: true` means that the system will look in the *tasks/* directory and execute the method defined in the `increment_version.rb` file (convention of the filename matching the task). Setting a task to `false` will ensure that the tool to skips that task.
 
-Any parameters under the :options symbol can be used to override defaults.
+Any parameters under the `:options` symbol can be used to override defaults.
 
-**NOTE** - The system is designed to work with the directory structure above. For example, the system will look for the provisioning profiles to sign the app in the '../Provisioning/' directory unless. This behaviour can be overridden in the options.
+**Note** - The system is designed to work with the directory structure given above. For example, the system will look for the provisioning profiles to sign the app in the *../Provisioning/* directory unless. This behaviour can be overridden in the options.
 
 The default configuration (currently) looks like this:
 
 ![config.yml](img/config.yml.png)
 
-### Configuration Files
+### Usage
 
 Running:
 
-$ `rake`
+    rake
 
 Will launch the default build process and run the process defined in the **default configuration file:** *config.yml*.
 
 Creating a custom config file in the configs directory and running:
 
-$ `rake default[configs/my_build_spec.yml]`
+    rake default configs/my_build_spec.yml
 
 Will launch a build process with the configuration specified in the *my_build_spec.yml* file. With this set-up multiple processes can be defined by creating multiple config files.
 
@@ -209,22 +214,24 @@ Create a new task by dropping a *new_task.rb* file in the tasks directory. The t
 
 ![task template](img/tasktemplate.png)
 
-The task runner is defined in continios_integration.rb. 
+The task runner is defined in *continios_integration.rb*. 
 
-Access configuration with:
+Access configuration with (this needs work):
 
-`runner = ContiniOSIntegration::CITaskRunner.instance`
-`config = runner.config`
+    runner = ContiniOSIntegration::CITaskRunner.instance
+    config = runner.config
 
-To run the new task, simply add a line containing the new task to the :run_tasks list in a config file to be passed to Rake (e.g. `new_task: true`).
+To run the new task, simply add a line containing the new task to the `:run_tasks` list in a config file to be passed to Rake (for example: `new_task: true`).
 
 ## Contributing
 
-I invite anyone to submit a pull request improving any existing code or introducing new CI task modules.
+Pull requests welcome! Please feel free to tidy up my novice Ruby code!
 
-## Contact/Questions
+## Contact
 
-@adamwaite
+[@adamwaite](https://twitter.com/AdamWaite)
+
+It would be great to know what you think.
 
 ## License
 
