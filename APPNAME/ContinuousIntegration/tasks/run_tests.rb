@@ -7,31 +7,20 @@ module ContiniOSIntegration
     
     # config
     runner = ContiniOSIntegration::CITaskRunner.instance
-    config = runner.config
-  
-    # app name argument
-    app_name = runner.app_name
-  
-    # handle undefined requirements
-    runner.terminate_with_err "An app name must be specified in the config options to run xcode_build" if runner.app_name.nil?
   		  
     # workspace argument
-    workspace_arg = "-workspace #{runner.workspace}"
-  
-    # SDK argument
-    sdk = "iphonesimulator"
-    sdk_arg = "-sdk #{sdk}"
+    workspace_arg = "-workspace #{runner.get_config :workspace}"
   
     # scheme argument
-		scheme = config[:options][:scheme].nil? ? app_name : config[:options][:scheme]
+		scheme = runner.get_config :scheme
     scheme_arg = "-scheme #{scheme}"
   
     # configuration argument
-		configuration = config[:options][:configuration].nil? ? nil : config[:options][:configuration]
+		configuration = runner.get_config :scheme
     configuration_arg = configuration.nil? ? "" : "-configuration #{configuration}"
 	
     # build directory argument
-    build_dir = runner.build_dir
+    build_dir = runner.get_config :build_dir
     build_dir_arg = "CONFIGURATION_BUILD_DIR=\"#{build_dir}\""
       
     # perform build

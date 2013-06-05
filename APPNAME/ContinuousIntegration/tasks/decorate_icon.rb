@@ -6,10 +6,9 @@ module ContiniOSIntegration
     
     # config
     runner = ContiniOSIntegration::CITaskRunner.instance
-    config = runner.config
             
     # reference all of the icon files
-    icon_dir = "../App/Resources/Assets/Images/Icon/"
+    icon_dir = runner.get_config :icon_path
 		icon_files = lambda do
       icon_paths = []
       Find.find("#{icon_dir}") do |path| 
@@ -38,23 +37,11 @@ module ContiniOSIntegration
       # set parameters for the annotation
       annotation_params = { gravity: Magick::SouthGravity, pointsize: icon_dimension * 0.11 , stroke: 'transparent', fill: '#FFF', font_family: "Helvetica CY", font_weight: Magick::BoldWeight}
       
-      # draw the SVN revision (switched off at the moment)  
-      if !svn_v_number.nil? and false
-        revision_text = Magick::Draw.new
-        revision_text.annotate(decorated_icon, 0, 0, 0, icon_dimension * 0.06, "rev: #{svn_v_number}") do
-          self.gravity = annotation_params[:gravity]
-          self.pointsize = annotation_params[:pointsize]
-          self.stroke = annotation_params[:stroke]
-          self.fill = annotation_params[:fill]
-          self.font_family = annotation_params[:font_family]
-          self.font_weight = annotation_params[:font_weight] 
-        end
-      end
-      
       # draw the version number
-      if !runner.new_version_number.nil?
+      new_v_number = runner.get_config :new_version_number
+      if !new_v_number.nil?
         version_text = Magick::Draw.new
-        version_text.annotate(decorated_icon, 0, 0, 0, icon_dimension * 0.05  , "#{runner.new_version_number}") do
+        version_text.annotate(decorated_icon, 0, 0, 0, icon_dimension * 0.05  , "#{new_v_number}") do
           self.gravity = annotation_params[:gravity]
           self.pointsize = annotation_params[:pointsize]
           self.stroke = annotation_params[:stroke]

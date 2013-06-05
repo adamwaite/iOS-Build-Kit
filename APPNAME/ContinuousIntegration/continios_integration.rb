@@ -24,6 +24,12 @@ module ContiniOSIntegration
       set_config :app_name, file_config[:options][:app_name]
       set_config :build_dir, file_config[:options][:build_dir].nil? ? Dir.getwd + "/builds/" : file_config[:options][:build_dir]
       set_config :app_dir, file_config[:options][:app_dir].nil? ? "#{get_config :app_name}" : file_config[:options][:app_dir]
+      set_config :icon_path, file_config[:options][:icon_path].nil? ? "../#{get_config :app_name}/Resources/Assets/Images/Icon/" : file_config[:options][:icon_path]
+      set_config :scheme, file_config[:options][:scheme].nil? ? "App" : file_config[:options][:scheme]
+      set_config :build_configuration, file_config[:options][:build_configuration].nil? ? nil : file_config[:options][:build_configuration]
+      set_config :sdk, file_config[:options][:sdk].nil? ? "iphoneos" : file_config[:options][:sdk]
+      set_config :code_sign, file_config[:options][:code_sign]
+      set_config :provisioning_profile, file_config[:options][:provisioning_path].nil? ? "../Provisioning/#{file_config[:options][:provisioning_profile]}" : "#{file_config[:options][:provisioning_path]}#{file_config[:options][:provisioning_profile]}" 
       set_config :plist_path, (lambda do
         plist_file_paths = []
         Find.find("../#{get_config :app_dir}/SupportingFiles/") { |path| plist_file_paths << path if path =~ /.*\.plist$/ }

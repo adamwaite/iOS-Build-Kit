@@ -22,7 +22,7 @@
 
 - (void)testExample
 {
-	STAssertEquals(YES, YES, @"This is going to fail miserably...");
+	STAssertEquals(YES, NO, @"This is going to fail miserably...");
 }
 
 @end
