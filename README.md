@@ -1,5 +1,10 @@
 # Xcode iOS Project Configuration
 
+
+---
+**NOTE - LOOKS LIKE ALL THE FILES HAVEN'T COMMITTED PROPERLY! WILL FIX AS SOON AS I HAVE ACCESS TO MY WORK MAC TOMORROW! THANKS**
+---
+
 **Features:**
 
 - Clean and organised directory structure mapping filesystem directories to Xcode groupings.
