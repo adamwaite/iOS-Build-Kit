@@ -5,10 +5,10 @@
 
 :run_tasks:
   increment_version: true														# increments the build version number in the app-info.plist
-  decorate_icon: true																# overlays the version number on the app icon	
-  xcode_build: true																	# runs the xcodebuild command to build the app
-  run_tests: true																		# run unit tests																													
-  create_ipa: true																	# packages the app into an .ipa for distribution
+  decorate_icon: false															# overlays the version number on the app icon	
+  xcode_build: false																# runs the xcodebuild command to build the app
+  run_tests: false																	# run unit tests																													
+  create_ipa: false																	# packages the app into an .ipa for distribution
 :options:
   :app_name: "APPNAME"															# Name of the Application (this should auto-set running configure.rb)
   :app_dir:																					# The app folder (conatins code, reources, plist etc). default: :app_name/:app_name
