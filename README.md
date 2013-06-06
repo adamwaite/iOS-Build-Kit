@@ -1,5 +1,7 @@
 # Xcode iOS Project Configuration
 
+Waiting on permission to open source this project. Coming soon!
+
 **Features:**
 
 - Clean and organised directory structure mapping filesystem directories to Xcode groupings.
