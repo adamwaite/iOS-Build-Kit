@@ -51,8 +51,6 @@ In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Con
         │   ├── App
         │   ├── Build
         │   ├── Controllers
-        │   │   ├── ViewController.h
-        │   │   └── ViewController.m
         │   ├── Lib
         │   │   └── Categories
         │   ├── Models
@@ -84,12 +82,9 @@ In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Con
         │   ├── <AppName>Tests.h
         │   ├── <AppName>Tests.m
         │   ├── Controllers
-        │   │   ├── ViewControllerTests.h
-        │   │   └── ViewControllerTests.m
         │   ├── Models
         │   ├── SupportingFiles
         │   │   ├── <AppName>Tests-Info.plist
-        │   │   └── en.lproj
         │   └── Views
         ├── ContinuousIntegration
         │   ├── Rakefile
