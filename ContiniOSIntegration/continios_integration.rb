@@ -40,7 +40,8 @@ module ContiniOSIntegration
       end).call
       set_config :workspace, (lambda do
         ws_paths = []
-        Find.find("../#{get_config :app_name}") { |path| ws_paths << path if path =~ /.*\.xcworkspace$/ unless path.include?('xcodeproj') }
+        ws_loc = "../#{get_config :app_name}"
+        Find.find(ws_loc) { |path| ws_paths << path if path =~ /.*\.xcworkspace$/ unless path.include?('xcodeproj') }
         ws_path = ws_paths.first.sub(' ', '\ ')
       end).call
       list_config

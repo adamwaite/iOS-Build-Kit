@@ -1,8 +1,5 @@
 # Xcode iOS Project Configuration
 
-
-**NOTE - LOOKS LIKE ALL THE FILES HAVEN'T COMMITTED PROPERLY! WILL FIX AS SOON AS I HAVE ACCESS TO MY WORK MAC TOMORROW! THANKS**
-
 **Features:**
 
 - Clean and organised directory structure mapping filesystem directories to Xcode groupings.
@@ -222,18 +219,21 @@ The task runner is defined in *continios_integration.rb*.
 Access configuration with (this needs work):
 
     runner = ContiniOSIntegration::CITaskRunner.instance
+    runner.get_config :key
+
+:key maps to a hash storing settings available in all tasks.
 
 To run the new task, simply add a line containing the new task to the `:run_tasks` list in a config file to be passed to Rake (for example: `new_task: true`).
 
 ## Contributing
 
-Pull requests welcome! Feel free to tidy up my R00by (n00b Ruby).
+Pull requests welcome! Feel free to tidy up my novice Ruby and add modules to the CI system.
 
 ## Contact
 
 [@adamwaite](https://twitter.com/AdamWaite)
 
-It would be great to know what you think.
+It would be great to hear what you think.
 
 ## License
 
