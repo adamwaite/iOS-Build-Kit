@@ -84,8 +84,6 @@ In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Con
         │   ├── <AppName>Tests.h
         │   ├── <AppName>Tests.m
         │   ├── Controllers
-        │   │   ├── ViewControllerTests.h
-        │   │   └── ViewControllerTests.m
         │   ├── Models
         │   ├── SupportingFiles
         │   │   ├── <AppName>Tests-Info.plist
@@ -113,7 +111,7 @@ In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Con
 
 ## OCUnit Testing Target
 
-The app project has been configured with a unit-testing target. There is one existing test that compares `YES` to `NO` and fails, just to make sure everything is working as it should!
+The app project has been configured with a unit-testing target. There is one existing test that compares `YES` to `NO` and fails miserably, just to make sure everything is working as it should.
 
 ## CocoaPods Dependency Management
 
@@ -216,22 +214,24 @@ Create a new task by dropping a *new_task.rb* file in the tasks directory. The t
 
 The task runner is defined in *continios_integration.rb*. 
 
-Access configuration with (this needs work):
+Access configuration with:
 
     runner = ContiniOSIntegration::CITaskRunner.instance
-    config = runner.config
+    runner.get_config :key
+
+Where :key maps to a value that is stored in a hash across tasks.
 
 To run the new task, simply add a line containing the new task to the `:run_tasks` list in a config file to be passed to Rake (for example: `new_task: true`).
 
 ## Contributing
 
-Pull requests welcome! Feel free to tidy up my R00by (n00b Ruby).
+Pull requests welcome! Feel free to clean my novice Ruby and add new tasks to the CI runner.
 
 ## Contact
 
 [@adamwaite](https://twitter.com/AdamWaite)
 
-It would be great to know what you think.
+It would be great to hear what you think.
 
 ## License
 
