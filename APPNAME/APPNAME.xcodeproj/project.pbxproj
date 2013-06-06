@@ -209,16 +209,8 @@
 		FFCC5912174395A7006F3673 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				FFCC5913174395B3006F3673 /* Categories */,
 			);
 			path = Lib;
-			sourceTree = "<group>";
-		};
-		FFCC5913174395B3006F3673 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		FFCC591417439663006F3673 /* Assets */ = {

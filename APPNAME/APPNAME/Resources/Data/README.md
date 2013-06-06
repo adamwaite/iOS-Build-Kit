@@ -1,0 +1,1 @@
+Any static data files (plists, JSON)

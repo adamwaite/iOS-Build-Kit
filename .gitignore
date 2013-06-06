@@ -1,4 +1,4 @@
 .DS_Store
 .DS_Store?
-.configure_backup.rb
+configure_backup.rb
 *.mobileprovision
