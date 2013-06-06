@@ -77,7 +77,6 @@ module ContiniOSIntegration
         
     # run tasks
     def run_tasks
-      return nil
       tasks_to_run = get_config :tasks
       tasks_to_run.each do |task, run|
         if run
@@ -92,7 +91,7 @@ module ContiniOSIntegration
     
     # decoration
     def header_msg h
-      puts Paint["\n\n" + h + "\n" + ("-" * h.length) + "\n", :blue]
+      puts "\n\n" + h + "\n" + ("-" * h.length) + "\n"
     end
     
     # successful task execution

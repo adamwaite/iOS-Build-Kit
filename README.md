@@ -175,7 +175,7 @@ Will launch the default build process and run the process defined in the **defau
 
 Creating a custom config file in the configs directory and running:
 
-    rake default configs/my_build_spec.yml
+    rake default[configs/my_build_spec.yml]
 
 Will launch a build process with the configuration specified in the *my_build_spec.yml* file. With this set-up multiple processes can be defined by creating multiple config files.
 
@@ -222,7 +222,6 @@ The task runner is defined in *continios_integration.rb*.
 Access configuration with (this needs work):
 
     runner = ContiniOSIntegration::CITaskRunner.instance
-    config = runner.config
 
 To run the new task, simply add a line containing the new task to the `:run_tasks` list in a config file to be passed to Rake (for example: `new_task: true`).
 
