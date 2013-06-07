@@ -1,0 +1,22 @@
+# iOS Build Process Configuration
+# -------------------------------
+# This is the default build configuration, override by copying the file and passing to the build tool with:
+# $ `rake default [your_config_file.yml]`
+
+:run_tasks:
+  increment_version: true														# increments the build version number in the app-info.plist
+  decorate_icon: true																# overlays the version number on the app icon	
+  xcode_build: true																	# runs the xcodebuild command to build the app
+  run_tests: true																		# run unit tests
+  create_ipa: true																	# packages the app into an .ipa for distribution
+:options:
+  :app_name: "APPNAME"															# name of the application (this should auto-set running configure.rb)
+  :app_dir:																					# app resources folder (default: APPNAME/APPNAME)
+  :scheme:																					# build scheme (default: the "App" scheme included with the workspace)
+  :build_configuration:															# build configuration (defaults to "Release")
+  :code_sign: "iPhone Distribution: LBi UK"					# code signing identity (find this next to your code signing identity in Xcode)
+  :provisioning_path:																# provisioning profile directory (defaults to "APPNAME/Provisioning/")
+  :provisioning_profile: "CITest.mobileprovision"		# provisioning profile file (defaults to the first provisioning profile found in :provisioning_path)
+  :icon_path:																				# icon directory (defaults to "APPNAME/Resources/Assets/Images/Icon/")
+  :build_dir_path:																	# path to build directory (defaults to 'builds/')
+  :sdk:																							# build SDK (default: "iphoneos")

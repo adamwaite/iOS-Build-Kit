@@ -1,0 +1,14 @@
+require "./continios_integration.rb"
+
+task :default, :config do |task, args|
+  config_file = (args[:config].nil?) ? "./configs/config.yml" : args[:config]
+  task_runner = ContiniOSIntegration::CITaskRunner.instance
+  task_runner.header_msg "ContiniOS Integration Build Process Did Launch"
+  task_runner.init_with_config(config: config_file)
+  task_runner.run_tasks
+  task_runner.on_completion
+end
+
+task :custom, :config do |task, args|
+  Rake.application.invoke_task("default[#{args[:config]}]")
+end

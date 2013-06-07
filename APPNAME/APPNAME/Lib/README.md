@@ -1,0 +1,1 @@
+Library code, typically reused in different projects but belong to you or the company you represent.
