@@ -189,14 +189,16 @@ The default configuration looks like this:
   :app_name: "APPNAME"															# name of the application (this should auto-set running configure.rb)
   :app_dir:																					# app resources folder (default: APPNAME/APPNAME)
   :scheme:																					# build scheme (default: the "App" scheme included with the workspace)
-  :build_configuration:															# build configuration (defaults to "Release")
-  :code_sign: "iPhone Distribution: LBi UK"					# code signing identity (find this next to your code signing identity in Xcode)
-  :provisioning_path:																# provisioning profile directory (defaults to "APPNAME/Provisioning/")
-  :provisioning_profile: "CITest.mobileprovision"		# provisioning profile file (defaults to the first provisioning profile found in :provisioning_path)
+  :build_configuration:															# build configuration (default: "Release")
+  :code_sign:																				# code signing identity (find this next to your code signing identity in Xcode)
+  :provisioning_path:																# provisioning profile directory (default: "APPNAME/Provisioning/")
+  :provisioning_profile:														# provisioning profile file (defaults to the first provisioning profile found in :provisioning_path)
   :icon_path:																				# icon directory (defaults to "APPNAME/Resources/Assets/Images/Icon/")
-  :build_dir_path:																	# path to build directory (defaults to 'builds/')
+  :build_dir_path:																	# path to build directory (default: "builds/")
   :sdk:																							# build SDK (default: "iphoneos")
 ```
+
+Note that some tasks will gracefully fail if it depends on a parameter and it hasn't been provided in the config.
 
 ### Usage
 
