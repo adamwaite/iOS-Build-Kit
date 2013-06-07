@@ -1,6 +1,6 @@
 # Xcode iOS Project Configuration
 
-Waiting on permission to open source this project. Coming soon!
+Waiting on permission to open source this project. It should be coming soon!
 
 **Features:**
 
@@ -15,7 +15,7 @@ Waiting on permission to open source this project. Coming soon!
 - [CocoaPods](http://cocoapods.org) initialised xcworkspace for management of third party Objective-C dependencies.
 
 
-## Prerequisites
+## Requirements
 
 As Mac OSX users and iOS developers it's most likely that the following are installed anyway, but just in case, ensure installation of:
 
@@ -46,71 +46,87 @@ As Mac OSX users and iOS developers it's most likely that the following are inst
 
 In a Rails-like [convention over configuration](http://en.wikipedia.org/wiki/Convention_over_configuration) approach, and knowing that MVC is central to a good design for a Cocoa application, the application filesystem has been structured to house application code, tests, assets and data in an organised fashion. Filesystem directories are mapped to Xcode groups, no more messy project folders!
 
-    ├── <AppName>
-    	  ├── <AppName>
-        │   ├── AppDelegate.h
-        │   ├── AppDelegate.m
-        │   ├── App
-        │   ├── Build
-        │   ├── Controllers
-        │   ├── Lib
-        │   │   └── Categories
-        │   ├── Models
-        │   ├── Resources
-        │   │   ├── Assets
-        │   │   │   ├── Images
-        │   │   │   │   ├── Default
-        │   │   │   │   │   ├── Default-568h@2x.png
-        │   │   │   │   │   ├── Default.png
-        │   │   │   │   │   └── Default@2x.png
-        │   │   │   │   └── Icon
-        │   │   │   │       ├── Icon.png
-        │   │   │   │       ├── Icon@2x.png
-        │   │   │   ├── Sound
-        │   │   │   └── Video
-        │   │   └── Data
-        │   ├── SupportingFiles
-        │   │   ├── <AppName>-Info.plist
-        │   │   ├── <AppName>-Prefix.pch
-        │   │   ├── en.lproj
-        │   │   └── main.m
-        │   ├── Vendor
-        │   └── Views
-        │       └── iPhone.storyboard
-        ├── <AppName>.xcworkspace
-    ├── <AppName>.xcodeproj
-        ├── <AppName>Tests
-        │   ├── <AppName>
-        │   ├── <AppName>Tests.h
-        │   ├── <AppName>Tests.m
-        │   ├── Controllers
-        │   ├── Models
-        │   ├── SupportingFiles
-        │   │   ├── <AppName>Tests-Info.plist
-        │   └── Views
-        ├── ContinuousIntegration
-        │   ├── Rakefile
-        │   ├── builds
-        │   ├── configs
-        │   │   ├── config.yml
-        │   ├── continios_integration.rb
-        │   └── tasks
-        │       ├── create_ipa.rb
-        │       ├── decorate_icon.rb
-        │       ├── increment_version.rb
-        │       ├── run_tests.rb
-        │       └── xcode_build.rb
-        ├── Podfile
-        ├── Podfile.lock
-        ├── Pods
-        │   ├── Manifest.lock
-        │   └── Pods.xcodeproj
-        │       └── project.pbxproj
-        └── Provisioning
+```
+.
+├── APPNAME
+│   ├── APPNAME
+│   │   ├── App
+│   │   ├── AppDelegate.h
+│   │   ├── AppDelegate.m
+│   │   ├── Build
+│   │   ├── Controllers
+│   │   ├── Lib
+│   │   ├── Models
+│   │   ├── Resources
+│   │   │   ├── Assets
+│   │   │   │   ├── Images
+│   │   │   │   │   ├── Default
+│   │   │   │   │   │   ├── Default-568h@2x.png
+│   │   │   │   │   │   ├── Default.png
+│   │   │   │   │   │   └── Default@2x.png
+│   │   │   │   │   └── Icon
+│   │   │   │   │       ├── Icon.png
+│   │   │   │   │       ├── Icon@2x.png
+│   │   │   │   ├── Sound
+│   │   │   │   └── Video
+│   │   │   └── Data
+│   │   ├── SupportingFiles
+│   │   │   ├── APPNAME-Info.plist
+│   │   │   ├── APPNAME-Prefix.pch
+│   │   │   ├── en.lproj
+│   │   │   └── main.m
+│   │   ├── Vendor
+│   │   └── Views
+│   │       └── iPhone.storyboard
+│   ├── APPNAME.xcodeproj
+│   ├── APPNAME.xcworkspace
+│   ├── APPNAMETests
+│   │   ├── APPNAMETests.h
+│   │   ├── APPNAMETests.m
+│   │   ├── App
+│   │   ├── Controllers
+│   │   ├── Models
+│   │   ├── SupportingFiles
+│   │   │   ├── APPNAMETests-Info.plist
+│   │   │   └── en.lproj
+│   │   └── Views
+│   ├── Podfile
+│   ├── Podfile.lock
+│   ├── Pods
+│   │   ├── Manifest.lock
+│   │   └── Pods.xcodeproj
+│   │       └── project.pbxproj
+│   └── Provisioning
+├── ContiniOSIntegration
+│   ├── Rakefile
+│   ├── builds
+│   │   └── README.md
+│   ├── configs
+│   │   └── config.yml
+│   ├── continios_integration.rb
+│   ├── reports
+│   ├── tasks
+│   │   ├── create_ipa.rb
+│   │   ├── decorate_icon.rb
+│   │   ├── increment_version.rb
+│   │   ├── run_tests.rb
+│   │   └── xcode_build.rb
+│   └── utils
+│       └── existing_version_number.rb
+├── configure.rb
+├── configure_backup.rb
+└── img
+    ├── create_ipa.png
+    ├── decorate_icon.png
+    ├── increment_version.png
+    ├── run_tests.png
+    ├── tasktemplate.png
+    └── xcode_build.png
+```
 
 ## OCUnit Testing Target
 
-The app project has been configured with a unit-testing target. There is one existing test that compares `YES` to `NO` and fails, just to make sure everything is working as it should!
+The app project has been configured with an OCUnit testing target. There is one existing test that compares `YES` to `NO` and fails miserably, just to make sure everything is working as it should.
 
 ## CocoaPods Dependency Management
 
@@ -128,11 +144,13 @@ For more information [see the CocoaPods getting started guide](http://cocoapods.
 
 ## ContiniOS Integration Toolkit
 
-**Warning:** This is yet to be used and tested alongside a continuous integration server such as Bamboo or Jenkins and will likely require some tweaking! Expect updates here.
+**Warning:** This is yet to be used and tested alongside a continuous integration server such as Jenkins. It will likely require some care as-is.
 
-The continuous integration and build system tooling is written in Ruby and executed with [Rake](http://rake.rubyforge.org). Options are passed to the Rake process in the form a YAML configuration file that describes the build tasks to be run and any further options. 
+The continuous integration and build system tooling is written in Ruby and executed with [Rake](http://rake.rubyforge.org). 
 
-The task structure is modular, new tasks can be added with no disruption of the existing process. Some of the tasks (including the test runner and the xcode_build task) wrap around [Facebook's xctool](https://github.com/facebook/xctool) system for human readable output.
+Options are passed to the Rake process in the form a YAML configuration file that describes the build tasks to be run and any further options. 
+
+The task structure is modular, new tasks can be added with no disruption of the existing process. Some of the tasks (including the run_tests and the xcode_build task) wrap around [Facebook's xctool](https://github.com/facebook/xctool) system for human readable output.
 
 **Features**
 
@@ -147,17 +165,38 @@ The task structure is modular, new tasks can be added with no disruption of the 
 
 ### Configuration Files
 
-Configuration files are in YAML format. The files are parsed by Ruby and passed to the system for execution.
+Configuration files are in YAML format. The files are parsed by Ruby and passed to the Rake task for execution.
 
 All commands under the `:run_tasks` symbol are executed based on the boolean that follows. For example: `increment_version: true` means that the system will look in the *tasks/* directory and execute the method defined in the `increment_version.rb` file (convention of the filename matching the task). Setting a task to `false` will ensure that the tool to skips that task.
 
-Any parameters under the `:options` symbol can be used to override defaults.
+Any parameters under the `:options` symbol can be used to override defaults. The system is designed to work with the directory structure provided above. For example, the system will look for the provisioning profiles to sign the app in the *../Provisioning/* directory. This behaviour can be overridden in the *:options*.
 
-**Note** - The system is designed to work with the directory structure given above. For example, the system will look for the provisioning profiles to sign the app in the *../Provisioning/* directory unless. This behaviour can be overridden in the options.
+The default configuration looks like this:
 
-The default configuration (currently) looks like this:
+```yaml
+# iOS Build Process Configuration
+# -------------------------------
+# This is the default build configuration, override by copying the file and passing to the build tool with:
+# $ `rake default [your_config_file.yml]`
 
-![config.yml](img/config.yml.png)
+:run_tasks:
+  increment_version: true														# increments the build version number in the app-info.plist
+  decorate_icon: true																# overlays the version number on the app icon	
+  xcode_build: true																	# runs the xcodebuild command to build the app
+  run_tests: true																		# run unit tests
+  create_ipa: true																	# packages the app into an .ipa for distribution
+:options:
+  :app_name: "APPNAME"															# name of the application (this should auto-set running configure.rb)
+  :app_dir:																					# app resources folder (default: APPNAME/APPNAME)
+  :scheme:																					# build scheme (default: the "App" scheme included with the workspace)
+  :build_configuration:															# build configuration (defaults to "Release")
+  :code_sign: "iPhone Distribution: LBi UK"					# code signing identity (find this next to your code signing identity in Xcode)
+  :provisioning_path:																# provisioning profile directory (defaults to "APPNAME/Provisioning/")
+  :provisioning_profile: "CITest.mobileprovision"		# provisioning profile file (defaults to the first provisioning profile found in :provisioning_path)
+  :icon_path:																				# icon directory (defaults to "APPNAME/Resources/Assets/Images/Icon/")
+  :build_dir_path:																	# path to build directory (defaults to 'builds/')
+  :sdk:																							# build SDK (default: "iphoneos")
+```
 
 ### Usage
 
@@ -169,21 +208,21 @@ Will launch the default build process and run the process defined in the **defau
 
 Creating a custom config file in the configs directory and running:
 
-    rake default[configs/my_build_spec.yml]
+    rake custom[configs/my_build_spec.yml]
 
-Will launch a build process with the configuration specified in the *my_build_spec.yml* file. With this set-up multiple processes can be defined by creating multiple config files.
+Will launch a build process with the configuration specified in the *my_build_spec.yml* file. With this method multiple build processes may be defined by creating multiple config files.
 
 ### Existing Tasks
 
 #### increment_version
 
-Increments the version number in the App Plist:
+Increments the version number in the app's plist:
 
 ![increment_version](img/increment_version.png)
 
 #### decorate_icon
 
-Decorates the icon with the version number:
+Decorates the icon with the version (new version if increment_version was run):
 
 ![decorate_icon](img/decorate_icon.png)
 
@@ -207,30 +246,53 @@ Creates an .ipa file for install.
 
 ### Creating a New Task
 
+#### Writing the task
+
 Create a new task by dropping a *new_task.rb* file in the tasks directory. The task must be of format:
 
-![task template](img/tasktemplate.png)
+```ruby
+module ContiniOSIntegration
+	def self.new_task
+		puts "New task code goes here!"
+	end
+end
+```
 
-The task runner is defined in *continios_integration.rb*. 
+#### Running the task
 
-Access configuration with (this needs work):
+To run the new task, simply add a line containing the new task to the `:run_tasks` list in a config file to be passed to Rake (for example: `new_task: true`).
+
+The task runner instance is defined in *continios_integration.rb*. 
+
+#### Task settings
+
+There is an accessible settings and options hash that's accessible in any task through the runner instance.
+
+Set a new value like this:
+
+    runner = ContiniOSIntegration::CITaskRunner.instance
+    runner.set_config :key, value
+
+Get a value like this:
 
     runner = ContiniOSIntegration::CITaskRunner.instance
     runner.get_config :key
 
-:key maps to a hash storing settings available in all tasks.
+New utility methods can be added in the *utils/* folder - they must be `require`d in a task for usage.
 
-To run the new task, simply add a line containing the new task to the `:run_tasks` list in a config file to be passed to Rake (for example: `new_task: true`).
+## Roadmap
+
+Potential future tasks:
+- Auto updload to TestFlight using [@mattt](https://twitter.com/mattt)'s [Shenzhen](https://github.com/nomad/shenzhen).
+- Save build reports in a report directory (probably extending the run_tests task by providing an option)
 
 ## Contributing
 
-Pull requests welcome! Feel free to tidy up my novice Ruby and add modules to the CI system.
+Pull requests welcome! Feel free to tidy up my Ruby and add any new modules to the CI system. Maybe you could create some interesting Podspecs? Or perhaps a fork using a different testing framework such as [Kiwi](https://github.com/allending/Kiwi)? Go wild.
 
 ## Contact
 
 [@adamwaite](https://twitter.com/AdamWaite)
-
-It would be great to hear what you think.
 
 ## License
 
