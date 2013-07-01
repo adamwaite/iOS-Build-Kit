@@ -32,7 +32,7 @@ module ContiniOSIntegration
       version_number_to_draw = runner.get_config :new_version_number
       puts "will render incremented version number: #{runner.get_config :new_version_number}"
     end
-        
+    
     # for each icon...
     icon_files.each do |icon_path|
       
@@ -50,7 +50,7 @@ module ContiniOSIntegration
       background.draw decorated_icon
       
       # set parameters for the annotation
-      annotation_params = { gravity: Magick::SouthGravity, pointsize: icon_dimension * 0.11 , stroke: 'transparent', fill: '#FFF', font_family: "Helvetica CY", font_weight: Magick::BoldWeight}      
+      annotation_params = { :gravity => Magick::SouthGravity, :pointsize => icon_dimension * 0.11 , :stroke => 'transparent', :fill => '#FFF', :font_family => "Helvetica CY", :font_weight => Magick::BoldWeight }
       
       # draw the version number
       new_v_number = runner.get_config :new_version_number

@@ -10,7 +10,6 @@ module ContiniOSIntegration
     # require tasks and utilities
     require 'find'
     require 'pp'
-    require 'paint'
     Dir["./tasks/*.rb"].each {|file| require file }
     
     # accesssors
@@ -99,7 +98,7 @@ module ContiniOSIntegration
     
     # successful task execution
     def success_msg m
-      puts Paint["\n#{m}\n", :green]
+      puts "\n#{m}\n"
     end
     
     # on_completion
@@ -109,7 +108,7 @@ module ContiniOSIntegration
     
     # terminate
     def terminate_with_err err
-      puts Paint["\nTerminating with error: #{err}\n\n", :red]
+      puts "\nTerminating with error: #{err}\n\n"
       exit
     end
       

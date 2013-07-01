@@ -18,7 +18,7 @@ module ContiniOSIntegration
     sdk_arg = "-sdk #{sdk}"
 		
     # build and output dir arguments
-    build_dir = output_dir = runner.get_config :build_dir
+    build_dir = output_dir = runner.get_config(:build_dir)
     
     # code sign and provisioning arguments
     code_sign = runner.get_config :code_sign
@@ -38,7 +38,7 @@ module ContiniOSIntegration
         
     # check existence of output filename in case of overwrite
     ipa_exists_already = (lambda do
-      build_dir = runner.get_config :build_dir
+      build_dir = runner.get_config(:build_dir)
       does_exist = false
       Dir.foreach(build_dir) { |f| does_exist = true if f.include? "#{output_file_name}" }
       does_exist

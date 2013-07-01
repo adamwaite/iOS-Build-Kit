@@ -17,7 +17,7 @@ module ContiniOSIntegration
     major_minor_split_version = [major, minor, revision].join(".")
     existing_version = [major_minor_split_version, build_number].join(".")
   
-    { major: major, minor: minor, revision: revision, build: build_number, major_minor_split: major_minor_split_version, full: existing_version }
+    { :major => major, :minor => minor, :revision => revision, :build => build_number, :major_minor_split => major_minor_split_version, :full => existing_version }
       
   end
 
