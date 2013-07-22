@@ -19,7 +19,7 @@ As Mac OSX users and iOS developers it's most likely that the following are inst
 
 1. **Xcode's command line tools:** (in the download tab of the Xcode preferences menu).
 
-2. **Homebrew:** Two dependencies are installed with [Homebrew](http://mxcl.github.io/homebrew/) OSX package manager - [Facebook's xctool](https://github.com/facebook/xctool) for human readable CLI output and [ImageMagick](http://www.imagemagick.org) the code driven Photoshop. 
+2. **Homebrew:** Three dependencies are installed with [Homebrew](http://mxcl.github.io/homebrew/) OSX package manager - [Facebook's xctool](https://github.com/facebook/xctool) for human readable CLI output, [ImageMagick](http://www.imagemagick.org) the code driven Photoshop, and finally [GhostScript](http://www.ghostscript.com) used for rendering text with ImageMagick.
 
 3. **Ruby Gems:** The continuous integration tooling is written in Ruby. [RubyGems](http://rubygems.org) is required to install some gems that power the toolkit, those being RMagick and Rake.
 

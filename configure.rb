@@ -51,6 +51,7 @@ class XcodeProjectConfig
     puts "installing dependencies, you may be asked for your password..."
     system "brew install xctool"
     system "brew install imagemagick"
+    system "brew install ghostscript"
     system "sudo gem install rmagick"
     system "sudo gem install rake"
     system "sudo gem install paint"

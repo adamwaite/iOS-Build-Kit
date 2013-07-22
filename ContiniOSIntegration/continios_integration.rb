@@ -8,6 +8,7 @@ module ContiniOSIntegration
     include Singleton
     
     # require tasks and utilities
+    require 'YAML'
     require 'find'
     require 'pp'
     Dir["./tasks/*.rb"].each {|file| require file }
