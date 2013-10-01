@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99349C8E17FAD182005D8BB6 /* Icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = 99349C8A17FAD182005D8BB6 /* Icon29.png */; };
+		99349C8F17FAD182005D8BB6 /* Icon58@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99349C8B17FAD182005D8BB6 /* Icon58@2x.png */; };
+		99349C9017FAD182005D8BB6 /* Icon80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99349C8C17FAD182005D8BB6 /* Icon80@2x.png */; };
+		99349C9117FAD182005D8BB6 /* Icon120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99349C8D17FAD182005D8BB6 /* Icon120@2x.png */; };
 		FF1E910A1744F0FE001908B3 /* iPhone.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = FFCC59271743994D006F3673 /* iPhone.storyboard */; };
 		FF9BF4AE1743923E008A3147 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9BF4AD1743923E008A3147 /* UIKit.framework */; };
 		FF9BF4B01743923E008A3147 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9BF4AF1743923E008A3147 /* Foundation.framework */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99349C8A17FAD182005D8BB6 /* Icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon29.png; sourceTree = "<group>"; };
+		99349C8B17FAD182005D8BB6 /* Icon58@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon58@2x.png"; sourceTree = "<group>"; };
+		99349C8C17FAD182005D8BB6 /* Icon80@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon80@2x.png"; sourceTree = "<group>"; };
+		99349C8D17FAD182005D8BB6 /* Icon120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon120@2x.png"; sourceTree = "<group>"; };
 		FF9BF4AA1743923E008A3147 /* APPNAME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPNAME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9BF4AD1743923E008A3147 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FF9BF4AF1743923E008A3147 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -267,6 +275,10 @@
 			children = (
 				FFCC592D174399BD006F3673 /* Icon.png */,
 				FFCC592E174399BD006F3673 /* Icon@2x.png */,
+				99349C8A17FAD182005D8BB6 /* Icon29.png */,
+				99349C8B17FAD182005D8BB6 /* Icon58@2x.png */,
+				99349C8C17FAD182005D8BB6 /* Icon80@2x.png */,
+				99349C8D17FAD182005D8BB6 /* Icon120@2x.png */,
 			);
 			path = Icon;
 			sourceTree = "<group>";
@@ -371,7 +383,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = LBi;
+				ORGANIZATIONNAME = APPNAME;
 			};
 			buildConfigurationList = FF9BF4A51743923E008A3147 /* Build configuration list for PBXProject "APPNAME" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -396,13 +408,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99349C9117FAD182005D8BB6 /* Icon120@2x.png in Resources */,
 				FF9BF4B81743923E008A3147 /* InfoPlist.strings in Resources */,
+				99349C8E17FAD182005D8BB6 /* Icon29.png in Resources */,
 				FFCC5924174397D0006F3673 /* Default-568h@2x.png in Resources */,
 				FFCC5925174397D0006F3673 /* Default.png in Resources */,
 				FFCC5926174397D0006F3673 /* Default@2x.png in Resources */,
 				FFCC59281743994D006F3673 /* iPhone.storyboard in Resources */,
 				FFCC592F174399BD006F3673 /* Icon.png in Resources */,
+				99349C9017FAD182005D8BB6 /* Icon80@2x.png in Resources */,
 				FFCC5930174399BD006F3673 /* Icon@2x.png in Resources */,
+				99349C8F17FAD182005D8BB6 /* Icon58@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +522,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -530,7 +546,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

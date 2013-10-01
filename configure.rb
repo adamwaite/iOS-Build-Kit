@@ -14,9 +14,15 @@ class XcodeProjectConfig
     @project_name.chomp!
     puts "cool name, #{@project_name}"
     rename_files_and_folders
-    puts "Install dependencies? (y for yes)"
+    puts "Use ContiniOS Integration tooling? (y for yes)"
     answer = gets
-    install_deps if ((answer == "y") or (answer == "yes"))
+    if (answer == "y")
+      puts "Install dependencies (xctool, imagemagick, ghostscript, rmagick, rake, paint, nomad-cli)? (y for yes)"
+      answer = gets
+      install_deps if ((answer == "y") or (answer == "yes"))
+    else
+      remove_ci_tools
+    end
     remove_docs_and_config
     puts "All done, open up #{@project_name}.xcworkspace and make an app."
 	end
@@ -33,18 +39,35 @@ class XcodeProjectConfig
       exit
     end
   end
-  
+
 	def rename_files_and_folders
-    puts "renaming files, folders and updating project settings..."
-    system "unset LANG; find . -type f | xargs sed -i '' 's/APPNAME/#{@project_name}/g'"
-    5.times do # there is probably a better way to do this...
+    puts "renaming files, folders and updating project settings..."  
+    overwrite = "APPNAME"
+
+    # this method implementation isn't great, find a new way to do it... 
+
+    # rename files and folders
+    5.times do
       Dir["**/*"].each do |f|
         file_name = File.absolute_path f
-        should_rename = file_name.include? "APPNAME"
-        new_file_name = file_name.gsub("APPNAME", "#{@project_name}")
+        unless File.directory? file_name
+          content = File.read(file_name).force_encoding('UTF-8').encode('ascii', :invalid => :replace, :replace => '?', :undef => :replace).encode('UTF-8')
+          content.gsub!(overwrite, @project_name)
+          File.open(f, 'w') { |file| file.write content }
+        end
+      end
+    end
+
+    # rename files and folders
+    5.times do
+      Dir["**/*"].each do |f|
+        file_name = File.absolute_path f
+        should_rename = file_name.include? overwrite
+        new_file_name = file_name.gsub(overwrite, @project_name)
         File.rename(f, new_file_name) if (should_rename and File.exists? f)
       end
     end
+
 	end
   
 	def install_deps
@@ -57,6 +80,10 @@ class XcodeProjectConfig
     system "sudo gem install paint"
     system "sudo gem install nomad-cli"
 	end
+
+  def remove_ci_tools
+    system "rm -rf ContiniOSIntegration/" if File.exists? Dir.pwd + "/ContiniOSIntegration/"
+  end
   
   def remove_docs_and_config
     puts "trashing unecessary files..."
