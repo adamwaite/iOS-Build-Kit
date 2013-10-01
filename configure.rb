@@ -91,6 +91,7 @@ class XcodeProjectConfig
     if !@dev_mode
       system "rm configure.rb" if File.exists? Dir.pwd + "/configure.rb"
       system "rm -rf img/" if File.exists? Dir.pwd + "/img/"
+      system "rm -rf .git/" if File.exists? Dir.pwd + "/.git/"
       Dir["**/*"].each do |f|
         file = File.absolute_path f
         should_delete = file.include? "README"
