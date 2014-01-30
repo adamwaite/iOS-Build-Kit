@@ -1,5 +1,13 @@
 # Xcode iOS Project Configuration
 
+**Note:**
+
+I am in the process of removing the project generator and letting this repository hold the continuous integration tooling only for the following reasons:
+
+- The rapid pace of the development of iOS devices, iOS and the SDK mean that project settings in the result of the generator are quickly out of date
+- It should be the user's decision what testing frameworks and directory structures should be used
+- Build settings should be customised by the developer from a fresh project
+
 **Features:**
 
 - Clean and organised directory structure mapping filesystem directories to Xcode groupings.
