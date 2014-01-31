@@ -67,7 +67,11 @@ module ContiniOSIntegration
       end
       
       # create a new file name
-      new_file_name = "#{icon_path}".sub('.png', "") + "_build.png"
+      if icon_path.include? "@2x"
+          new_file_name = "#{icon_path}".sub('@2x.png', "") + "_build@2x.png"
+          else
+          new_file_name = "#{icon_path}".sub('.png', "") + "_build.png"
+      end
       
       # write the file to disk
       decorated_icon.write(new_file_name)
