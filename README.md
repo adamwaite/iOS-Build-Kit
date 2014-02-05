@@ -1,14 +1,16 @@
 # Xcode iOS Project Configuration
 
-**Note:**
+## Note
 
-I am in the process of removing the project generator and letting this repository hold the continuous integration tooling only for the following reasons:
+Xcode-Project is currently being rewritten for version 2. The rewrite is test driven, so it's going to be much more robust. Just need to write the specs and refactor the last few task modules.
+
+I am in the process of completely removing the project generator and letting this repository hold the continuous integration tooling only for the following reasons:
 
 - The rapid pace of the development of iOS devices, iOS and the SDK mean that project settings in the result of the generator are quickly out of date
 - It should be the user's decision what testing frameworks and directory structures should be used
 - Build settings should be customised by the developer from a fresh project
 
-**Features:**
+## Features
 
 - Clean and organised directory structure mapping filesystem directories to Xcode groupings.
 - Pre-configured unit testing target with OCUnit.
