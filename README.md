@@ -1,6 +1,8 @@
 # iOS BuildKit
 
-![iOS BuildKit](resources/icon.png)
+<p align="center">
+  ![iOS BuildKit](resources/icon.png)
+</p>
 
 BuildKit is a modular command line interface for automating iOS project builds. Bundled build tasks include:
 - Increment the build number
