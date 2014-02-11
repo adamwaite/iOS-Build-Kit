@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require 'ios_build_kit'
+
+args = ARGV.dup
+ARGV.clear
+
+config_file = args[0]
+
+BuildKit::Utilities::Console.terminate_with_err "BuildKit requires a configuration file to run, see: (http://github.com/adamwaite/iOS-Build-Kit)." if config_file.nil?
+
+BuildKit.start_with_configuration config_file

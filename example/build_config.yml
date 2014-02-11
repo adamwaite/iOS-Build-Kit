@@ -1,0 +1,18 @@
+:run_tasks:
+  increment_version: true
+  decorate_icon: true
+  xcode_build: true
+  run_tests: true
+  create_ipa: true
+
+:options:
+  :app_name: "BuildKit"
+  :workspace: "/Users/adamwaite/iOS/Lib/BuildKit/example/BuildKit.xcworkspace"
+  :info_plist: "/Users/adamwaite/iOS/Lib/BuildKit/example/BuildKit/BuildKit-Info.plist"
+  :build_configuration: "Release"
+  :scheme: "BuildKit"
+  :sdk: "iphoneos"
+  :provisioning_profile: "/Users/adamwaite/iOS/Lib/BuildKit/example/Provisioning/BuildKitTest.mobileprovision"
+  :code_sign: "iPhone Distribution: Alpaca Labs"
+  :icon_dir: "/Users/adamwaite/iOS/Lib/BuildKit/example/BuildKit/Icon/"
+  :build_dir: "/Users/adamwaite/iOS/Lib/BuildKit/example/Builds/"

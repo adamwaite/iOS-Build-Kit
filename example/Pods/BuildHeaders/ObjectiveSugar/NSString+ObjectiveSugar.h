@@ -1,0 +1,1 @@
+../../ObjectiveSugar/Classes/NSString+ObjectiveSugar.h
