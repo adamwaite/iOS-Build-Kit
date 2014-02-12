@@ -3,23 +3,23 @@ require 'yaml'
 class Hash
 	
 	def enable_increment_version
-		self.merge({ tasks: { increment_version: { run: true } } })
+		self[:tasks][:increment_version][:run] = true
   end
   
   def enable_decorate_icon
-		self.merge({ tasks: { decorate_icon: { run: true } } })
+		self[:tasks][:decorate_icon][:run] = true
   end
   
   def enable_xcode_build
-		self.merge({ tasks: { xcode_build: { run: true } } })
+		self[:tasks][:xcode_build][:run] = true
   end
   
   def enable_run_tests
-		self.merge({ tasks: { run_tests: { run: true } } })
+		self[:tasks][:run_tests][:run] = true
   end
   
   def enable_create_ipa
-		self.merge({ tasks: { create_ipa: { run: true } } })
+		self[:tasks][:create_ipa][:run] = true
   end
 
 end
@@ -81,7 +81,6 @@ def valid_config_file_data
 
 		preferences: {
 		  reports: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/spec/temp/",
-		  silence: true	
 		}
 		
 	}
