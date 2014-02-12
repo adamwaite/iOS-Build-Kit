@@ -2,8 +2,8 @@ module BuildKit
   
   module Tasks
 
-    def self.xcode_build runner
-      task = XcodeBuildTask.new(runner: runner)
+    def self.xcode_build runner, task_opts
+      task = XcodeBuildTask.new({ runner: runner, opts: task_opts })
       task.run!
     end
 

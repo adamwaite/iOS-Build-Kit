@@ -4,8 +4,8 @@ module BuildKit
     
   module Tasks
 
-    def self.decorate_icon runner
-      task = DecorateIconTask.new({ runner: runner })
+    def self.decorate_icon runner, task_opts
+      task = DecorateIconTask.new({ runner: runner, opts: task_opts })
       task.run!
     end
 

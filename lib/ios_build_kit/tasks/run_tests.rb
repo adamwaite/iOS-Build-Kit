@@ -2,8 +2,8 @@ module BuildKit
   
   module Tasks
 
-    def self.run_tests runner
-      task = RunTestsTask.new({ runner: runner })
+    def self.run_tests runner, task_opts
+      task = RunTestsTask.new({ runner: runner, opts: task_opts })
       task.run!
     end
 

@@ -2,8 +2,8 @@ module BuildKit
   
   module Tasks
 
-    def self.create_ipa runner
-      task = CreateIPATask.new({ runner: runner })
+    def self.create_ipa runner, task_opts
+      task = CreateIPATask.new({ runner: runner, opts: task_opts })
       task.run!
     end
       

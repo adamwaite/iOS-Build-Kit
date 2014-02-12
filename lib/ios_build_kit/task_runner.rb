@@ -1,19 +1,21 @@
 module BuildKit
   
-  require 'yaml' 
+  require 'yaml'
+  require 'pry'
 
   module Runner
 
     class TaskRunner
           
-      attr_reader :config, :tasks, :outputs
+      attr_reader :config, :options, :tasks, :outputs
 
       attr_accessor :store
       
       def initialize(attributes = {})
-        passed_opts = hash_from_yaml attributes[:config]
-        @config = TaskRunnerConfig.new(passed_opts[:options]).freeze
-        prepare_task_queue! passed_opts[:run_tasks]
+        passed = hash_from_yaml attributes[:config_file]
+        @config = TaskRunnerConfig.new(passed[:configuration]).freeze
+        @options = TaskRunnerConfig.new (passed[:options]).freeze
+        prepare_task_queue! passed[:tasks]
         @store = {}
         @outputs = {}
         run_tasks!
@@ -38,16 +40,26 @@ module BuildKit
       def prepare_task_queue! tasks
         @tasks = { raw: {}, run: [], skip: [], completed: [], running: nil }
         @tasks[:raw] = tasks.freeze
-        @tasks[:run] = tasks.select { |k, v| v == true }.map { |k, v| k }.freeze
-        @tasks[:skip] = tasks.select { |k, v| v == false }.map { |k, v| k }.freeze
+        @tasks[:run] = tasks.select { |k, v| v[:run] == true }.map do |k, v| 
+          t = Hash.new
+          t[k] = { run: v[:run], options: v[:options] }
+          t
+        end.freeze
+        @tasks[:skip] = tasks.select { |k, v| v[:run] == false }.map do |k, v| 
+          t = Hash.new
+          t[k] = { run: v[:run], options: v[:options] }
+          t
+        end.freeze      
+        @tasks[:run].freeze
+        @tasks[:skip].freeze
       end
       
       def run_tasks!
-        @tasks[:raw].each do |task_name, run|
-          if run
+        @tasks[:raw].each do |task_name, task_opts|
+          if task_opts[:run]
             @tasks[:running] = task_name
             BuildKit::Utilities::Console.header_msg "Running Task: #{task_name}"
-            BuildKit::Tasks.send task_name, self
+            BuildKit::Tasks.send task_name, self, task_opts
           else
             BuildKit::Utilities::Console.header_msg "Skipping Task: #{task_name}"
           end

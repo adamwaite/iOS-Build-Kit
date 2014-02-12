@@ -2,8 +2,8 @@ module BuildKit
       
   module Tasks
 
-    def self.increment_version runner
-      task = IncrementVersionTask.new(runner: runner)
+    def self.increment_version runner, task_opts
+      task = IncrementVersionTask.new({ runner: runner, opts: task_opts })
       task.run!
     end
 

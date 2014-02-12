@@ -5,7 +5,7 @@ module BuildKit
   def self.start_with_configuration config
     BuildKit::Utilities::Assertions.assert_files_exist [config]
     BuildKit::Utilities::Console.header_msg "BuildKit Run Started"
-    BuildKit::Runner::TaskRunner.new({ config: config })
+    BuildKit::Runner::TaskRunner.new({ config_file: config })
   end
 
 end
