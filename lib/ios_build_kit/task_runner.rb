@@ -1,20 +1,19 @@
 module BuildKit
   
   require 'yaml'
-  require 'pry'
 
   module Runner
 
     class TaskRunner
           
-      attr_reader :config, :options, :tasks, :outputs
+      attr_reader :config, :preferences, :tasks, :outputs
 
       attr_accessor :store
       
       def initialize(attributes = {})
         passed = hash_from_yaml attributes[:config_file]
         @config = TaskRunnerConfig.new(passed[:configuration]).freeze
-        @options = TaskRunnerConfig.new (passed[:preferences]).freeze
+        @preferences = TaskRunnerConfig.new (passed[:preferences]).freeze
         prepare_task_queue! passed[:tasks]
         @store = {}
         @outputs = {}
@@ -68,10 +67,17 @@ module BuildKit
       end
       
       def all_tasks_completed
-        # BuildKit.create_report self
+        unless @preferences.reports.nil?
+          if File.exists? @preferences.reports
+            build_report = BuildKit::Utilities::Reporter::create_report self
+            BuildKit::Utilities::Console.success_msg "BuildKit run report created at: #{build_report}"
+          else
+            puts "Warning: Report not created. Invalid directory specified: #{@preferences.reports}"
+          end
+        end
         BuildKit::Utilities::Console.success_msg "\n😃  BuildKit Run Completed! Ran #{@tasks[:completed].count} tasks successfully!\n\n"
       end
-      
+
     end
 
   end

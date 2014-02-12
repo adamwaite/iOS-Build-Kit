@@ -10,7 +10,7 @@
     :options:
       :log: true
   :run_tests:
-    :run: true
+    :run: false
     :options:
       :log: true
   :create_ipa:
@@ -30,5 +30,5 @@
   :icon_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit/Icon/"
   :build_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Builds/"
 
-:options:
-  :reports: true
+:preferences:
+  :reports: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Reports/"

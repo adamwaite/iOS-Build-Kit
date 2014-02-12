@@ -236,6 +236,7 @@ Lots of plans for BuildKit:
 - Make `decorate_icon` compatible with Xcode 5 asset catalogues.
 - Add a generator for config files.
 - Add some colour to the output.
+- Beautify the reports.
 
 ## Contributing
 
