@@ -14,7 +14,7 @@ module BuildKit
       def initialize(attributes = {})
         passed = hash_from_yaml attributes[:config_file]
         @config = TaskRunnerConfig.new(passed[:configuration]).freeze
-        @options = TaskRunnerConfig.new (passed[:options]).freeze
+        @options = TaskRunnerConfig.new (passed[:preferences]).freeze
         prepare_task_queue! passed[:tasks]
         @store = {}
         @outputs = {}

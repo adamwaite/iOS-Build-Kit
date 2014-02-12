@@ -34,6 +34,80 @@ After the requirments have been met, BuildKit can be installed with:
 
 ## Usage
 
+BuildKit is launched from a command line environment with:
+
+```
+buildkit
+```
+
+Pass a configuration file to BuildKit with:
+
+```
+buildkit your-config-file.yml
+```
+
+### Configuration Files
+
+The configuration file describes three things:
+
+1. Task modules to run (and task-specific options)  
+2. Project configuration
+3. Preferences
+
+An example configuration file:
+
+```yaml
+:tasks:
+  :increment_version:
+    :run: true
+    :options:
+  :decorate_icon:
+    :run: true
+    :options:
+  :xcode_build:
+    :run: true
+    :options:
+   		:log: true
+  :run_tests:
+    :run: true
+    :options:
+    	:log: true
+  :create_ipa:
+    :run: true
+    :options:
+    	:log: true
+
+:configuration:
+  :app_name: "BuildKit"
+  :workspace: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit.xcworkspace"
+  :info_plist: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit/BuildKit-Info.plist"
+  :build_configuration: "Release"
+  :scheme: "BuildKit"
+  :sdk: "iphoneos"
+  :provisioning_profile: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Provisioning/BuildKitTest.mobileprovision"
+  :code_sign: "iPhone Distribution: Alpaca Labs"
+  :icon_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit/Icon/"
+  :build_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Builds/"
+
+:preferences:
+  :reports: true
+```
+
+#### Tasks Configuration
+
+The `:tasks:` symbol is used to define what tasks you would like your process to run. If `:run:` is set to `true`, that task will be executed as part of the process. Setting `:run:` to `false` will mean that the task is skipped (note that some tasks depend on others, and may cause a graceful failure).
+
+Anything passed with the `:options:` symbol will be provided as an option. For example, taking the example configuration file above the `:log:` option on the `run_tests` task is set to `true` so the test output will be printed to the CLI.
+
+The Tasks section in this document will describe all of the options in more detail.
+
+#### Tasks Configuration
+
+The `:tasks:` symbol is used to define what tasks you would like your process to run. If `:run:` is set to true, that task will be executed as part of the process. Setting `:run:` to false will mean that the task is skipped (note that some tasks depend on others, and may cause a graceful failure).
+
+
+
+
 ## Roadmap
 
 - Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen).
