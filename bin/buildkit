@@ -10,6 +10,8 @@ ARGV.clear
 
 config_file = args[0]
 
+system "clear"
+
 BuildKit::Utilities::Console.terminate_with_err "BuildKit requires a configuration file to run, see: (http://github.com/adamwaite/iOS-Build-Kit)." if config_file.nil?
 
 BuildKit.start_with_configuration config_file

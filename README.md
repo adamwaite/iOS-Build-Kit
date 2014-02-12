@@ -1,6 +1,6 @@
 # iOS BuildKit
 
-BuildKit is a modular command line interface for automating iOS project builds.
+BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
 Bundled build tasks include:
 
@@ -52,7 +52,7 @@ The configuration file describes three things:
 
 1. Task modules to run (and task-specific options)  
 2. Project configuration
-3. Preferences
+3. User preferences
 
 An example configuration file:
 
@@ -69,7 +69,7 @@ An example configuration file:
     :options:
    		:log: true
   :run_tests:
-    :run: true
+    :run: false
     :options:
     	:log: true
   :create_ipa:
@@ -93,29 +93,117 @@ An example configuration file:
   :reports: true
 ```
 
-#### Tasks Configuration
+#### Setting Tasks
 
-The `:tasks:` symbol is used to define what tasks you would like your process to run. If `:run:` is set to `true`, that task will be executed as part of the process. Setting `:run:` to `false` will mean that the task is skipped (note that some tasks depend on others, and may cause a graceful failure).
+The `:tasks:` symbol is used to define what tasks you would like your process to run. If `:run:` is set to `true` on a particular task then that task will be executed as part of the build process. Setting `:run:` to `false` will mean that the task is skipped (note that some tasks depend on others, and may cause a graceful failure). In the examle above all tasks but for `run_tests` will be executed.
 
 Anything passed with the `:options:` symbol will be provided as an option. For example, taking the example configuration file above the `:log:` option on the `run_tests` task is set to `true` so the test output will be printed to the CLI.
 
-The Tasks section in this document will describe all of the options in more detail.
+The Tasks section in this README describes all of the options available to each task.
 
-#### Tasks Configuration
+#### Setting Project Configuration
 
-The `:tasks:` symbol is used to define what tasks you would like your process to run. If `:run:` is set to true, that task will be executed as part of the process. Setting `:run:` to false will mean that the task is skipped (note that some tasks depend on others, and may cause a graceful failure).
+To run the task modules successfully requires some project-specific configuration, this is done under the `:configuration:` symbol.
+
+- `:app_name:`: Your app's name!
+- `:workspace:`:  The path to your workspace (note that single Xcode project files aren't supported).
+- `:info_plist:`: The path to your workspace (note that single Xcode project files aren't supported).
+- `:build_configuration:`: Your build configuration (normally "Release" or suchlike)
+- `:scheme:`: Project scheme to build
+- `:sdk:`: SDK to build with (example: "iphoneos")
+- `:provisioning_profile:`: Path to a provisioning profile to sign the app with.
+- `:code_sign:`: The code signature, this is found in Xcode next to a selected provisioning profile (example: "iPhone Distribution: Alpaca Labs"). I recommend this incredible [Quick Look plug in](https://github.com/chockenberry/Provisioning) if you want to inspect profiles.
+- `:icon_dir:`: The path to a directory containing you icon image files. More on this in the Tasks `decorate_icon` section of this README.
+- `:build_dir:`: The path to drop any build and ipa files after they have been created.
+
+Note: if some required configuration has not been provided, or an invalid location has been provided for an option that requires a path, then BuildKit will gracefully fail.
+
+#### Setting User Preferences
+
+BuildKit can be configured to suit your own preference too. This is done under the `:preferences:` symbol. For example, to switch on build report generation set the `:reports:` symbol to `true`. User preferences are further described in the User Preferences section of this README.
+
+## Tasks
+
+BuildKit comes packaged with the following task modules:
+
+- `increment_version`: Increment the build number
+- `decorate_icon`: Overlay the build number on the application icon
+- `xcode_build`: Build the app
+- `run_tests`: Run unit tests
+- `create_ipa`: Generate an .ipa artefact
+
+**In future I hope to provide BuildKit users with the ability to specify their own tasks with a generator.**
+
+### increment_version
+
+Increments the build version number in the Info-plist:
+
+![increment_version](resources/increment_version.png)
+
+Requires configuration:
+- `:info_plist:`
+
+#### decorate_icon
+
+Duplicates you app icon files and aints the version number on top (incremented with `increment_version` or not).
+
+![decorate_icon](resources/decorate_icon.png)
+
+*Decorate icon requires some convention to be followed*: Your app icon files should be contained in a dedicated directory of their own. To have the icon version number appear on top of a generated ipa requires you to drop the icon directory in to Xcode as a folder reference rather than a group. Then set the icon files in your Info-plist as:
+
+```
+<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>CONTAININGFOLDER/Decorated-ICONFILENAME</string>
+				<string>CONTAININGFOLDER/Decorated-ICONFILENAME</string>
+				<string>CONTAININGFOLDER/Decorated-ICONFILENAME</string>
+			</array>
+		</dict>
+	</dict>
+```
+
+If you're unsure check the example project in the repo.
+
+Requires configuration:
+- `:info_plist:`
+- `:icon_dir:`
+
+#### xcode_build
+
+Builds the project:
+
+![xcode_build](resources/xcode_build.png)
 
 
 
+### run_tests
+
+Runs unit tests:
+
+![run_tests](Resources/run_tests.png)
+
+#### create_ipa
+
+Creates an .ipa file for install.
+
+![create_ipa](Resources/create_ipa.png)
+
+Note `create_ipa` depends on `xcode_build`.
 
 ## Roadmap
 
 - Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen).
 - Add a means to allow custom task modules to be added to the process.
+- Add a task to email build reports.
+- Make `decorate_icon` compatible with Xcode 5 asset catalogues.
 
 ## Contributing
 
-All pull requests welcome! Please ensure that all RSpec tests pass and that new code is covered with tests.
+All pull requests welcome! Please ensure that all RSpec tests pass and that any new code is covered with new specs. Please update the README with any new features.
 
 ## Contact
 
