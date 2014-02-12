@@ -6,9 +6,7 @@ module BuildKit
 
     class TaskRunner
           
-      attr_reader :config, :preferences, :tasks, :outputs
-
-      attr_accessor :store
+      attr_reader :config, :preferences, :tasks, :outputs, :store
       
       def initialize(attributes = {})
         passed = hash_from_yaml attributes[:config_file]
@@ -17,7 +15,19 @@ module BuildKit
         prepare_task_queue! passed[:tasks]
         @store = {}
         @outputs = {}
-        run_tasks!
+      end
+
+      def run_tasks!
+        @tasks[:raw].each do |task_name, task_opts|
+          if task_opts[:run]
+            @tasks[:running] = task_name
+            BuildKit::Utilities::Console.header_msg "Running Task: #{task_name}"
+            BuildKit::Tasks.send task_name, self, task_opts[:options]
+          else
+            BuildKit::Utilities::Console.header_msg "Skipping Task: #{task_name}"
+          end
+        end
+        all_tasks_completed
       end
 
       def has_completed_task? task
@@ -52,20 +62,7 @@ module BuildKit
         @tasks[:run].freeze
         @tasks[:skip].freeze
       end
-      
-      def run_tasks!
-        @tasks[:raw].each do |task_name, task_opts|
-          if task_opts[:run]
-            @tasks[:running] = task_name
-            BuildKit::Utilities::Console.header_msg "Running Task: #{task_name}"
-            BuildKit::Tasks.send task_name, self, task_opts[:options]
-          else
-            BuildKit::Utilities::Console.header_msg "Skipping Task: #{task_name}"
-          end
-        end
-        all_tasks_completed
-      end
-      
+
       def all_tasks_completed
         unless @preferences.reports.nil?
           if File.exists? @preferences.reports

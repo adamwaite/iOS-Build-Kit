@@ -1,18 +1,20 @@
-# require 'rake'
-# require 'pry'
-# require_relative '../build_kit'
-# require_relative 'support/config_mocker.rb'
-# require_relative 'support/build_dir.rb'
-# require_relative 'support/file_clear.rb'
-# Dir[File.dirname(__FILE__) + '../utils/*.rb'].each {|file| require file }
+require 'rake'
 
-# RSpec.configure do |config|
-#   config.color_enabled = true
-#   config.tty = true
-# 	config.formatter = :documentation
-# 	config.fail_fast = true
+$:.push File.expand_path("../lib", __FILE__)
 
-# 	config.before(:each) { create_spec_build_dir }
-# 	config.after(:each) { destroy_spec_build_dir }
+Dir["lib/ios_build_kit/**/*.rb"].reject { |file| file.include? "lib/ios_build_kit/version.rb" }.each { |f| load(f) }
 
-# end
+require_relative 'support/config_mocker.rb'
+require_relative 'support/temp_dir.rb'
+
+RSpec.configure do |config|
+  
+  config.color_enabled = true
+  config.tty = true
+	config.formatter = :documentation
+	config.fail_fast = true
+
+	config.before(:each) { create_spec_temp_dir }
+	config.after(:each) { destroy_spec_temp_dir }
+
+end

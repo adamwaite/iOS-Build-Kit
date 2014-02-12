@@ -214,7 +214,7 @@ Requires configuration:
 
 ## User Preferences
 
-BuildKit includes features that can be enabled under the `:preferences:` symbol of a config file. This is a space to customise your build process. There's only one preference right now.
+BuildKit includes features that can be enabled under the `:preferences:` symbol of a config file. This is a space to customise your build process.
 
 ### User Preferences: Create Reports
 
