@@ -1,4 +1,7 @@
 .DS_Store
 .DS_Store?
 configure_backup.rb
-*.mobileprovision
+example/Pods
+example/Builds
+*.gem
+*.lock
