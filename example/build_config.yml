@@ -1,19 +1,22 @@
 :tasks:
   :increment_version:
     :run: true
-    :options: 
+    :options:
   :decorate_icon:
     :run: true
     :options:
   :xcode_build:
     :run: true
     :options:
+      :log: true
   :run_tests:
     :run: true
     :options:
+      :log: true
   :create_ipa:
     :run: true
     :options:
+      :log: false
 
 :configuration:
   :app_name: "BuildKit"
@@ -29,4 +32,3 @@
 
 :options:
   :reports: true
-  :log_xc_output: true

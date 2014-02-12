@@ -59,7 +59,7 @@ module BuildKit
           if task_opts[:run]
             @tasks[:running] = task_name
             BuildKit::Utilities::Console.header_msg "Running Task: #{task_name}"
-            BuildKit::Tasks.send task_name, self, task_opts
+            BuildKit::Tasks.send task_name, self, task_opts[:options]
           else
             BuildKit::Utilities::Console.header_msg "Skipping Task: #{task_name}"
           end

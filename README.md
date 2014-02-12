@@ -1,4 +1,5 @@
-# iOS BuildKit
+iOS BuildKit
+===
 
 BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
@@ -90,12 +91,14 @@ An example configuration file:
   :build_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Builds/"
 
 :preferences:
-  :reports: true
+  :reports: "/Users/adamwaite/iOS/Lib/BuildKit/Reports/"
 ```
 
 #### Setting Tasks
 
 The `:tasks:` symbol is used to define what tasks you would like your process to run. If `:run:` is set to `true` on a particular task then that task will be executed as part of the build process. Setting `:run:` to `false` will mean that the task is skipped (note that some tasks depend on others, and may cause a graceful failure). In the examle above all tasks but for `run_tests` will be executed.
+
+The tasks will be run in the order that they appear in the list. It's recommended to follow the order shown in the example as they've been ordered to satisfy requirments and provide more value to the process. In the example the version is incremented with `increment_version`, followed by the newly incremented version being rendered on the app icon with `decorate_icon`, finally `xcode_build` and `create_ipa` are run and the version number appears on icon if the generated ipa is installed on a device. 
 
 Anything passed with the `:options:` symbol will be provided as an option. For example, taking the example configuration file above the `:log:` option on the `run_tests` task is set to `true` so the test output will be printed to the CLI.
 
@@ -122,7 +125,7 @@ Note: if some required configuration has not been provided, or an invalid locati
 
 BuildKit can be configured to suit your own preference too. This is done under the `:preferences:` symbol. For example, to switch on build report generation set the `:reports:` symbol to `true`. User preferences are further described in the User Preferences section of this README.
 
-## Tasks
+## Build Tasks
 
 BuildKit comes packaged with the following task modules:
 
@@ -131,8 +134,6 @@ BuildKit comes packaged with the following task modules:
 - `xcode_build`: Build the app
 - `run_tests`: Run unit tests
 - `create_ipa`: Generate an .ipa artefact
-
-**In future I hope to provide BuildKit users with the ability to specify their own tasks with a generator.**
 
 ### increment_version
 
@@ -143,7 +144,7 @@ Increments the build version number in the Info-plist:
 Requires configuration:
 - `:info_plist:`
 
-#### decorate_icon
+### decorate_icon
 
 Duplicates you app icon files and aints the version number on top (incremented with `increment_version` or not).
 
@@ -172,34 +173,69 @@ Requires configuration:
 - `:info_plist:`
 - `:icon_dir:`
 
-#### xcode_build
+### xcode_build
 
 Builds the project:
 
 ![xcode_build](resources/xcode_build.png)
 
-
+Requires configuration:
+- `:app_name:`
+- `:workspace:`
+- `:sdk:`
+- `:build_configuration:`
+- `:build_dir:`
+- `:scheme:`
 
 ### run_tests
 
 Runs unit tests:
 
-![run_tests](Resources/run_tests.png)
+![run_tests](resources/run_tests.png)
 
-#### create_ipa
+*Note regarding Kiwi*: As of present you need to use 'edge Kiwi' due to [Kiwi issue 390](https://github.com/allending/Kiwi/issues/390). To used the latest Kiwi put `pod 'Kiwi/XCTest', git: 'https://github.com/allending/Kiwi'` in your Podfile.
 
-Creates an .ipa file for install.
+Requires configuration:
+- `:workspace:`
+- `:scheme:`
 
-![create_ipa](Resources/create_ipa.png)
+### create_ipa
 
-Note `create_ipa` depends on `xcode_build`.
+Creates an .ipa build artefact.
+
+![create_ipa](resources/create_ipa.png)
+
+Requires previous tasks:
+- `xcode_build`
+
+Requires configuration:
+- `:workspace:`
+- `:scheme:`
+
+## User Preferences
+
+BuildKit includes features that can be enabled under the `:preferences:` symbol of a config file. This is a space to customise your build process. There's only one preference right now.
+
+### User Preferences: Create Reports
+
+Set `:reports:` to a directory in your config file to create a JSON report containing the project configuration, build time, build outputs and test outputs after a BuildKit run has completed.
+
+Leaving the :reports:` preference blank will skip report generation.
+
+## Examples
+
+An example workspace has been included in the repo if you want to try it out. You'll need to change the paths in the `build_config.yml` configuration file first.
 
 ## Roadmap
+
+Lots of plans for BuildKit:
 
 - Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen).
 - Add a means to allow custom task modules to be added to the process.
 - Add a task to email build reports.
 - Make `decorate_icon` compatible with Xcode 5 asset catalogues.
+- Add a generator for config files.
+- Add some colour to the output.
 
 ## Contributing
 

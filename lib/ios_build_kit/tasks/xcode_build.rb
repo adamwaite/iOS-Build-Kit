@@ -37,6 +37,7 @@ module BuildKit
       def run_command!
         command = build_command
         @output = %x[#{command}]
+        puts @output if @task_options[:log]
       end
 
       def build_succeeded?
