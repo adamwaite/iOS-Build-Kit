@@ -6,22 +6,20 @@ BuildKit is a modular command line interface for automating iOS project builds. 
 Bundled build tasks include:
 
 - Increment the build number
-- Draw the build number on the app icon
+- Draw the version number on the app icon
 - Build the app
 - Run unit tests
 - Generate an .ipa artefact
 
 BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit) with an executable that can be launched either in a continous integration server environment or on your development machine. The process is configured with a simple YAML file that describes the tasks to run and your project-specific options. This means that you can tailor the build process to meet your requirements.
 
-**Note**
-
-This repository was previosly known as Xcode-Project. It previously contained a project generator as well as a less developed build toolkit. The generator was removed due to the rapid advances in iOS technology. If you would like to continue using the previous version it's available [here](https://github.com/adamwaite/iOS-Build-Kit/releases).
+*Note: This repository was previosly known as Xcode-Project. It previously contained a project generator as well as a less developed build toolkit. The generator was removed due to the rapid advances in iOS technology. If you would like to continue using the previous version it's available [here](https://github.com/adamwaite/iOS-Build-Kit/releases).*
 
 ## Requirements
 
-- **Ruby 2.0+**: BuildKit is written and run with Ruby, you'll need a version higher than 2.0 because of the modern syntax. Check your Ruby version with `ruby -v`. [RVM](http://rvm.io/) makes it easy should you need to update.
+- **Ruby > 2.0**: BuildKit is written and run with Ruby, you'll need a version higher than 2.0 because of the modern syntax. Check your Ruby version with `ruby -v`. [RVM](http://rvm.io/) makes it easy should you need to update.
 - **Xcode command line tools**: `xcode-select --install`
-- xctool: BuildKit uses [Facebook's xctool](https://github.com/facebook/xctool) to translate the standard Xcode CLI output from computer garbage to human readable form. Install with: `brew install xctool`
+- **xctool**: BuildKit uses [Facebook's xctool](https://github.com/facebook/xctool) to translate the standard Xcode CLI output from computer garbage to human readable form. Install with: `brew install xctool`
 - **ImageMagick**: Command line graphics library used to draw on the app icon. Install with: `brew install imagemagick`.
 - **GhostScript**: Command line text rendering library used to draw the version number on the app icon. Install with: `brew install ghostscript`.
 
@@ -108,12 +106,12 @@ To run the task modules successfully requires some project-specific configuratio
 
 - `:app_name:`: Your app's name!
 - `:workspace:`:  The path to your workspace (note that single Xcode project files aren't supported).
-- `:info_plist:`: The path to your workspace (note that single Xcode project files aren't supported).
+- `:info_plist:`: The path to your app's main info-plist file.
 - `:build_configuration:`: Your build configuration (normally "Release" or suchlike)
 - `:scheme:`: Project scheme to build
 - `:sdk:`: SDK to build with (example: "iphoneos")
 - `:provisioning_profile:`: Path to a provisioning profile to sign the app with.
-- `:code_sign:`: The code signature, this is found in Xcode next to a selected provisioning profile (example: "iPhone Distribution: Alpaca Labs"). I recommend this incredible [Quick Look plug in](https://github.com/chockenberry/Provisioning) if you want to inspect profiles.
+- `:code_sign:`: The code signature, this is found in Xcode next to a selected provisioning profile (example: "iPhone Distribution: Alpaca Labs"). I recommend this [OSX quick look plug in](https://github.com/chockenberry/Provisioning) if you want to inspect profiles.
 - `:icon_dir:`: The path to a directory containing you icon image files. More on this in the Tasks `decorate_icon` section of this README.
 - `:build_dir:`: The path to drop any build and ipa files after they have been created.
 
@@ -128,7 +126,7 @@ BuildKit can be configured to suit your own preference too. This is done under t
 BuildKit comes packaged with the following task modules:
 
 - `increment_version`: Increment the build number
-- `decorate_icon`: Overlay the build number on the application icon
+- `decorate_icon`: Overlay the version number on the app icon
 - `xcode_build`: Build the app
 - `run_tests`: Run unit tests
 - `create_ipa`: Generate an .ipa artefact
@@ -149,7 +147,7 @@ Duplicates you app icon files and aints the version number on top (incremented w
 ![decorate_icon](resources/decorate_icon.png)
 ![decorate_icon](resources/decorate_icon2.png)
 
-*Decorate icon requires some convention to be followed*: Your app icon files should be contained in a dedicated directory of their own. To have the icon version number appear on top of a generated ipa requires you to drop the icon directory in to Xcode as a folder reference rather than a group. Then set the icon files in your Info-plist as:
+**Decorate icon requires some convention to be followed**: Your app icon files should be contained in a dedicated directory of their own. To have the icon version number appear on top of a generated ipa requires you to drop the icon directory in to Xcode as a folder reference rather than a group. Then set the icon files in your Info-plist as:
 
 ```
 <key>CFBundleIcons</key>
@@ -178,6 +176,9 @@ Builds the project:
 
 ![xcode_build](resources/xcode_build.png)
 
+Options:
+- `log`: logs the output to the console
+
 Requires configuration:
 - `:app_name:`
 - `:workspace:`
@@ -192,7 +193,10 @@ Runs unit tests:
 
 ![run_tests](resources/run_tests.png)
 
-*Note regarding Kiwi*: As of present you need to use 'edge Kiwi' due to [Kiwi issue 390](https://github.com/allending/Kiwi/issues/390). To used the latest Kiwi put `pod 'Kiwi/XCTest', git: 'https://github.com/allending/Kiwi'` in your Podfile.
+*Note regarding Kiwi: As of present you need to use 'edge Kiwi' due to [Kiwi issue 390](https://github.com/allending/Kiwi/issues/390). To used the latest Kiwi put `pod 'Kiwi/XCTest', git: 'https://github.com/allending/Kiwi'` in your Podfile.*
+
+Options:
+- `log`: logs the output to the console
 
 Requires configuration:
 - `:workspace:`
@@ -200,9 +204,12 @@ Requires configuration:
 
 ### create_ipa
 
-Creates an .ipa build artefact.
+Creates an .ipa build artefact and drops it in build directory specified in the config file.
 
 ![create_ipa](resources/create_ipa.png)
+
+Options:
+- `log`: logs the output to the console
 
 Requires previous tasks:
 - `xcode_build`
@@ -210,10 +217,11 @@ Requires previous tasks:
 Requires configuration:
 - `:workspace:`
 - `:scheme:`
+- Everything required for `xcode_build`
 
 ## User Preferences
 
-BuildKit includes features that can be enabled under the `:preferences:` symbol of a config file. This is a space to customise your build process.
+BuildKit includes some user preferences that can be enabled under the `:preferences:` symbol of a config file.
 
 ### User Preferences: Create Reports
 
@@ -229,8 +237,8 @@ An example workspace has been included in the repo if you want to try it out. Yo
 
 Lots of plans for BuildKit:
 
-- Cover with RSpec specs (in progress)
-- Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen) (next up)
+- Cover with RSpec specs (in progress).
+- Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen) (next up).
 - Add a means to allow custom task modules to be added to the process.
 - Add a task to email build reports.
 - Make `decorate_icon` compatible with Xcode 5 asset catalogues.
