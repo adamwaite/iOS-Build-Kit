@@ -10,7 +10,7 @@
     :options:
       :log: true
   :run_tests:
-    :run: false
+    :run: true
     :options:
       :log: true
   :create_ipa:

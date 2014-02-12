@@ -19,15 +19,13 @@ This repository was previosly known as Xcode-Project. It previously contained a 
 
 ## Requirements
 
-- *Ruby 2.0+*: BuildKit is written and run with Ruby, you'll need a version higher than 2.0 because of the modern syntax. Check your Ruby version with `ruby -v`. [RVM](http://rvm.io/) makes it easy should you need to update.
-- *Xcode command line tools*: `xcode-select --install`
+- **Ruby 2.0+**: BuildKit is written and run with Ruby, you'll need a version higher than 2.0 because of the modern syntax. Check your Ruby version with `ruby -v`. [RVM](http://rvm.io/) makes it easy should you need to update.
+- **Xcode command line tools**: `xcode-select --install`
 - xctool: BuildKit uses [Facebook's xctool](https://github.com/facebook/xctool) to translate the standard Xcode CLI output from computer garbage to human readable form. Install with: `brew install xctool`
-- *ImageMagick*: Command line graphics library used to draw on the app icon. Install with: `brew install imagemagick`.
-- *GhostScript*: Command line text rendering library used to draw the version number on the app icon. Install with: `brew install ghostscript`.
+- **ImageMagick**: Command line graphics library used to draw on the app icon. Install with: `brew install imagemagick`.
+- **GhostScript**: Command line text rendering library used to draw the version number on the app icon. Install with: `brew install ghostscript`.
 
 ## Installation
-
-*NOTE: Gem being pushed to RubyGems soon, hang tight.*
 
 After the requirments have been met, BuildKit can be installed with:
 
@@ -149,6 +147,7 @@ Requires configuration:
 Duplicates you app icon files and aints the version number on top (incremented with `increment_version` or not).
 
 ![decorate_icon](resources/decorate_icon.png)
+![decorate_icon](resources/decorate_icon2.png)
 
 *Decorate icon requires some convention to be followed*: Your app icon files should be contained in a dedicated directory of their own. To have the icon version number appear on top of a generated ipa requires you to drop the icon directory in to Xcode as a folder reference rather than a group. Then set the icon files in your Info-plist as:
 
@@ -220,17 +219,18 @@ BuildKit includes features that can be enabled under the `:preferences:` symbol 
 
 Set `:reports:` to a directory in your config file to create a JSON report containing the project configuration, build time, build outputs and test outputs after a BuildKit run has completed.
 
-Leaving the :reports:` preference blank will skip report generation.
+Leaving the `:reports:` preference blank will skip report generation.
 
 ## Examples
 
-An example workspace has been included in the repo if you want to try it out. You'll need to change the paths in the `build_config.yml` configuration file first.
+An example workspace has been included in the repo if you want to try it out. You'll need to change the paths in the `build_config.yml` configuration file first and run a `pod install`.
 
 ## Roadmap
 
 Lots of plans for BuildKit:
 
-- Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen).
+- Cover with RSpec specs (in progress)
+- Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen) (next up)
 - Add a means to allow custom task modules to be added to the process.
 - Add a task to email build reports.
 - Make `decorate_icon` compatible with Xcode 5 asset catalogues.
@@ -240,7 +240,7 @@ Lots of plans for BuildKit:
 
 ## Contributing
 
-All pull requests welcome! Please ensure that all RSpec specs pass and that any new code is covered with new specs. Please update the README with any new features.
+All pull requests welcome! Please update the README with any new features.
 
 ## Contact
 
