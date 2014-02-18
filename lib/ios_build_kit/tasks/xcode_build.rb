@@ -31,7 +31,7 @@ module BuildKit
         scheme_arg = "-scheme \"#{@config.scheme}\""   
         configuration_arg = "-configuration \"#{@config.build_configuration}\""
         build_dir_arg = "CONFIGURATION_BUILD_DIR=\"#{@config.build_dir}\""
-        "xctool #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} build"
+        "xcodebuild #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} build | xcpretty -c"
       end
 
       def run_command!
