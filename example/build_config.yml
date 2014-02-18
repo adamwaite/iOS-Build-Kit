@@ -31,4 +31,4 @@
   :build_dir: "Builds"
 
 :preferences:
-  :reports: "Reports/"
+  :reports: "Reports"
