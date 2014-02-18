@@ -12,14 +12,18 @@ module BuildKit
 
     	def self.assert_required_config req_keys, runner
         req_keys.each do |k| 
-          runner.terminate_with_err "Missing Configuration: #{k} is required to run #{runner.tasks[:running]}" if runner.config[k].nil?
+          BuildKit::Utilities::Console.terminate_with_err "Missing Configuration: #{k} is required to run #{runner.tasks[:running]}" if runner.config[k].nil?
         end
       end
 
       def self.assert_tasks_completed req_tasks, runner
         req_tasks.each do |t| 
-          runner.terminate_with_err "Task Required: #{t.to_s} should be completed to run #{runner.tasks[:running]}" unless runner.has_completed_task? t
+          BuildKit::Utilities::Console.terminate_with_err "Task Required: #{t.to_s} should be completed to run #{runner.tasks[:running]}" unless runner.has_completed_task? t
         end
+      end
+
+      def self.assert_symbol_hash_keys hash
+        #TODO
       end
 
     end

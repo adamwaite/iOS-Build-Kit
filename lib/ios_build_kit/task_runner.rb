@@ -43,7 +43,9 @@ module BuildKit
       private
 
       def hash_from_yaml file
-        YAML.load_file(file)
+        hash = YAML.load_file(file)
+        BuildKit::Utilities::Assertions.assert_symbol_hash_keys hash
+        hash
       end
 
       def prepare_task_queue! tasks

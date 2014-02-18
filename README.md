@@ -27,7 +27,7 @@ BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit)
 
 After the requirments have been met, BuildKit can be installed with:
 
-`gem install buildkit`
+`gem install ios_build_kit`
 
 ## Usage
 
@@ -215,8 +215,6 @@ Requires previous tasks:
 - `xcode_build`
 
 Requires configuration:
-- `:workspace:`
-- `:scheme:`
 - Everything required for `xcode_build`
 
 ## User Preferences
@@ -249,6 +247,11 @@ Lots of plans for BuildKit:
 ## Contributing
 
 All pull requests welcome! Please update the README with any new features.
+
+### Contributors
+
+- [@adamwaite](https://github.com/adamwaite/)
+- [@garnett](https://github.com/garnett)
 
 ## Contact
 
