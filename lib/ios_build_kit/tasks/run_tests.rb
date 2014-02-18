@@ -38,7 +38,7 @@ module BuildKit
       end
 
       def tests_passed?
-        @output.include? "TEST SUCCEEDED"
+        @output.include? "0 failures (0 unexpected)"
       end
 
       def complete_task!
