@@ -11,9 +11,6 @@ module BuildKit
 		    runner.tasks[:run].each { |task| to_write[:outputs][task.keys.first] = runner.outputs[task.keys.first] }
 		    file_name = File.join(runner.preferences.reports, "report-#{Time.now.to_i}.json")
 		    File.open(file_name, 'w') { |f| f.write to_write.to_json }
-		    puts "DEBUG"
-		    puts runner.preferences.reports
-		    puts file_name
 		  	file_name
 		  end
 
