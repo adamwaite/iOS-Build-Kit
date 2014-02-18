@@ -23,7 +23,13 @@ module BuildKit
       end
 
       def self.assert_symbol_hash_keys hash
-        #TODO
+        hash.each do |key, val|
+          if val.is_a? Hash
+            BuildKit::Utilities::Assertions.assert_symbol_hash_keys val
+          else
+            BuildKit::Utilities::Console.terminate_with_err "Invalid config file: config file keys should be in Symbol form (:key:). Failed on: #{key}." unless key.is_a? Symbol
+          end
+        end
       end
 
     end
