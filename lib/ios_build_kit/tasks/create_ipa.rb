@@ -54,7 +54,7 @@ module BuildKit
 
       def artefact_full_path
         build_artefact_filename! if @artefact_filename.nil?
-        @config.build_dir + @artefact_filename
+        File.join(@config.absolute_build_dir, @artefact_filename)
       end
 
       def existing_ipa_count
@@ -64,7 +64,7 @@ module BuildKit
       def build_command
         workspace_arg = "-workspace \"#{@config.workspace}\""
         sdk_arg = "-sdk #{@config.sdk}"
-        build_file_arg = "-v \"#{@config.build_dir}#{@config.app_name}.app\"" 
+        build_file_arg = "-v \"#{File.join(@config.absolute_build_dir, @config.app_name)}.app\"" 
         output_file_arg = "-o \"#{artefact_full_path}\"" 
         code_sign_arg = "--sign #{@config.code_sign}"
         provisioning_arg = "--embed \"#{@config.provisioning_profile}\""
