@@ -3,5 +3,6 @@
 configure_backup.rb
 example/Pods
 example/Builds
+example/absolute_build_config.yml
 *.gem
 *.lock

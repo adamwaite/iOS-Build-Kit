@@ -9,6 +9,7 @@
     :run: true
     :options:
       :log: true
+      :clean: true
   :run_tests:
     :run: true
     :options:

@@ -64,6 +64,7 @@ An example configuration file:
     :run: true
     :options:
    		:log: true
+      :clean: true
   :run_tests:
     :run: false
     :options:
@@ -177,6 +178,7 @@ Builds the project:
 
 Options:
 - `log`: logs the output to the console
+- `clean`: clean before build
 
 Requires configuration:
 - `:app_name:`
