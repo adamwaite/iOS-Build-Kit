@@ -32,7 +32,7 @@ module BuildKit
         scheme_arg = "-scheme \"#{@config.scheme}\""   
         configuration_arg = "-configuration \"#{@config.build_configuration}\""
         build_dir_arg = "CONFIGURATION_BUILD_DIR=\"#{@config.absolute_build_dir}\""
-        "xcodebuild #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} #{cmd} | xcpretty -c"
+        "xcodebuild #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} #{cmd} | xcpretty -c; echo EXIT CODE: ${PIPESTATUS}"
       end
 
       def run_command! cmd
@@ -47,7 +47,7 @@ module BuildKit
       end
 
       def build_succeeded?
-        @output.include? "BUILD SUCCEEDED"
+        @output.include? "EXIT CODE: 0"
       end
 
       def complete_task!
