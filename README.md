@@ -63,7 +63,7 @@ An example configuration file:
   :xcode_build:
     :run: true
     :options:
-   		:log: true
+      :log: true
       :clean: true
   :run_tests:
     :run: false
