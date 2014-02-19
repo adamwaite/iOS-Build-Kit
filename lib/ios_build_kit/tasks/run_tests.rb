@@ -28,7 +28,7 @@ module BuildKit
       def build_command
         workspace_arg = "-workspace \"#{@config.workspace}\""
         scheme_arg = "-scheme \"#{@config.scheme}\""
-        "xcodebuild #{workspace_arg} #{scheme_arg} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test | xcpretty -c"
+        "xcodebuild #{workspace_arg} #{scheme_arg} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test | xcpretty -c; echo EXIT CODE: ${PIPESTATUS}"
       end
 
       def run_command!
@@ -38,7 +38,7 @@ module BuildKit
       end
 
       def tests_passed?
-        @output.include? "0 failures (0 unexpected)"
+        @output.include? "EXIT CODE: 0"
       end
 
       def complete_task!
