@@ -75,18 +75,18 @@ An example configuration file:
 
 :configuration:
   :app_name: "BuildKit"
-  :workspace: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit.xcworkspace"
-  :info_plist: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit/BuildKit-Info.plist"
+  :workspace: "BuildKit.xcworkspace"
+  :info_plist: "BuildKit/BuildKit-Info.plist"
   :build_configuration: "Release"
   :scheme: "BuildKit"
   :sdk: "iphoneos"
-  :provisioning_profile: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Provisioning/BuildKitTest.mobileprovision"
+  :provisioning_profile: "Provisioning/BuildKitTest.mobileprovision"
   :code_sign: "iPhone Distribution: Alpaca Labs"
-  :icon_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit/Icon/"
-  :build_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Builds/"
+  :icon_dir: "BuildKit/Icon/"
+  :build_dir: "Builds"
 
 :preferences:
-  :reports: "/Users/adamwaite/iOS/Lib/BuildKit/Reports/"
+  :reports: "Reports"
 ```
 
 #### Setting Tasks
