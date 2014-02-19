@@ -22,7 +22,7 @@ module BuildKit
 
       def assert_requirements
         BuildKit::Utilities::Assertions.assert_required_config [:app_name, :workspace, :sdk, :build_configuration, :build_dir, :scheme], @runner
-        BuildKit::Utilities::Assertions.assert_files_exist [@config.workspace, @config.build_dir]
+        BuildKit::Utilities::Assertions.assert_files_exist [@config.workspace, @config.absolute_build_dir]
       end
 
       def build_command
@@ -30,8 +30,8 @@ module BuildKit
         sdk_arg = "-sdk \"#{@config.sdk}\""
         scheme_arg = "-scheme \"#{@config.scheme}\""   
         configuration_arg = "-configuration \"#{@config.build_configuration}\""
-        build_dir_arg = "CONFIGURATION_BUILD_DIR=\"#{@config.build_dir}\""
-        "xctool #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} build"
+        build_dir_arg = "CONFIGURATION_BUILD_DIR=\"#{@config.absolute_build_dir}\""
+        "xcodebuild #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} build | xcpretty -c"
       end
 
       def run_command!

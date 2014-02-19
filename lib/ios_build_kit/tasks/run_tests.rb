@@ -28,7 +28,7 @@ module BuildKit
       def build_command
         workspace_arg = "-workspace \"#{@config.workspace}\""
         scheme_arg = "-scheme \"#{@config.scheme}\""
-        "xctool #{workspace_arg} #{scheme_arg} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test -freshSimulator -parallelize"
+        "xcodebuild #{workspace_arg} #{scheme_arg} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test | xcpretty -c"
       end
 
       def run_command!
@@ -38,7 +38,7 @@ module BuildKit
       end
 
       def tests_passed?
-        @output.include? "TEST SUCCEEDED"
+        @output.include? "0 failures (0 unexpected)"
       end
 
       def complete_task!

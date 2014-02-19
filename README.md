@@ -19,7 +19,6 @@ BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit)
 
 - **Ruby > 2.0**: BuildKit is written and run with Ruby, you'll need a version higher than 2.0 because of the modern syntax. Check your Ruby version with `ruby -v`. [RVM](http://rvm.io/) makes it easy should you need to update.
 - **Xcode command line tools**: `xcode-select --install`
-- **xctool**: BuildKit uses [Facebook's xctool](https://github.com/facebook/xctool) to translate the standard Xcode CLI output from computer garbage to human readable form. Install with: `brew install xctool`
 - **ImageMagick**: Command line graphics library used to draw on the app icon. Install with: `brew install imagemagick`.
 - **GhostScript**: Command line text rendering library used to draw the version number on the app icon. Install with: `brew install ghostscript`.
 
