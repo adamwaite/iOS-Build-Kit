@@ -2,8 +2,6 @@ module BuildKit
   
   module Tasks
 
-    require "fileutils"
-    
     def self.xcode_build runner, task_opts
       task = XcodeBuildTask.new({ runner: runner, opts: task_opts })
       task.run!
@@ -18,7 +16,6 @@ module BuildKit
       def run!
         run_command! "clean" if @task_options[:clean]
         run_command! "build"
-        create_build_directory unless File.exists?(@config.absolute_build_dir)
         complete_task!
       end
 
@@ -26,10 +23,7 @@ module BuildKit
 
       def assert_requirements
         BuildKit::Utilities::Assertions.assert_required_config [:app_name, :workspace, :sdk, :build_configuration, :build_dir, :scheme], @runner
-      end
-
-      def create_build_directory
-        FileUtils.mkdir_p(@config.absolute_build_dir)
+        BuildKit::Utilities::Assertions.assert_files_exist [@config.workspace, @config.absolute_build_dir]
       end
 
       def build_command cmd

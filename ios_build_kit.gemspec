@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency "commander", "~> 4.1"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "paint", "~> 0.8"
-  s.add_dependency "nomad-cli", "~> 0.0.2"
+  s.add_dependency "nomad-cli", "~> 0.0.3"
   s.add_dependency "rmagick", '~> 2.13'
   s.add_dependency "xcpretty", '~> 0.1.3'
 

@@ -16,9 +16,8 @@ module BuildKit
       attr_reader :output
 
       def run!
-        run_command! "clean" if @task_options[:clean]
-        run_command! "build"
-        create_build_directory unless File.exists?(@config.absolute_build_dir)
+        create_build_directory
+        run_command!
         complete_task!
       end
 
@@ -29,31 +28,26 @@ module BuildKit
       end
 
       def create_build_directory
-        FileUtils.mkdir_p(@config.absolute_build_dir)
+        FileUtils.mkdir_p(@config.absolute_build_dir) unless File.exists?(@config.absolute_build_dir)
       end
 
-      def build_command cmd
+      def build_command
         workspace_arg = "-workspace \"#{@config.workspace}\""
         sdk_arg = "-sdk \"#{@config.sdk}\""
         scheme_arg = "-scheme \"#{@config.scheme}\""   
         configuration_arg = "-configuration \"#{@config.build_configuration}\""
         build_dir_arg = "CONFIGURATION_BUILD_DIR=\"#{@config.absolute_build_dir}\""
-        "xcodebuild #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} #{cmd} | xcpretty -c; echo EXIT CODE: ${PIPESTATUS}"
+        "xcodebuild #{workspace_arg} #{sdk_arg} #{scheme_arg} #{configuration_arg} #{build_dir_arg} build | xcpretty -c"
       end
 
-      def run_command! cmd
-        command = build_command cmd
-        cmd_output = %x[#{command}]
-        @output = cmd_output if is_build? cmd
-        puts cmd_output if @task_options[:log]
-      end
-
-      def is_build? cmd
-        cmd == "build"
+      def run_command!
+        command = build_command
+        @output = %x[#{command}]
+        puts @output if @task_options[:log]
       end
 
       def build_succeeded?
-        @output.include? "EXIT CODE: 0"
+        @output.include? "BUILD SUCCEEDED"
       end
 
       def complete_task!
