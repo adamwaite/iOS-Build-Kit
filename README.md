@@ -194,8 +194,6 @@ Runs unit tests:
 
 ![run_tests](resources/run_tests.png)
 
-*Note regarding Kiwi: As of present you need to use 'edge Kiwi' due to [Kiwi issue 390](https://github.com/allending/Kiwi/issues/390). To used the latest Kiwi put `pod 'Kiwi/XCTest', git: 'https://github.com/allending/Kiwi'` in your Podfile.*
-
 Options:
 - `log`: logs the output to the console
 
