@@ -2,24 +2,44 @@ require 'yaml'
 
 class Hash
 	
-	def enable_increment_version
+	def enable_increment_version!
 		self[:tasks][:increment_version][:run] = true
+		self
   end
   
-  def enable_decorate_icon
+  def enable_decorate_icon!
 		self[:tasks][:decorate_icon][:run] = true
+		self
   end
   
-  def enable_xcode_build
+  def enable_xcode_build!
 		self[:tasks][:xcode_build][:run] = true
+		self
   end
   
-  def enable_run_tests
+  def enable_run_tests!
 		self[:tasks][:run_tests][:run] = true
+		self
   end
   
-  def enable_create_ipa
+  def enable_create_ipa!
 		self[:tasks][:create_ipa][:run] = true
+		self
+  end
+
+  def remove_config! key
+  	self[:configuration][key] = nil
+  	self
+  end
+
+  def missing_file! key
+  	self[:configuration][key] = "/path/to/nowhere/missing.file"
+  	self
+  end
+
+  def invalid_location! key
+  	self[:configuration][key] = "/path/to/nowhere/"
+  	self
   end
 
 end
@@ -68,19 +88,19 @@ def valid_config_file_data
 		
 		configuration: {
 			app_name: "BuildKit",
-		  workspace: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit.xcworkspace",
-		  info_plist: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit/BuildKit-Info.plist",
+		  workspace: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit.xcworkspace",
+		  info_plist: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit/BuildKit-Info.plist",
 		  build_configuration: "Release",
 		  scheme: "BuildKit",
 		  sdk: "iphoneos",
-		  provisioning_profile: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/Provisioning/BuildKitTest.mobileprovision",
+		  provisioning_profile: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/Provisioning/BuildKitTest.mobileprovision",
 		  code_sign: "iPhone Distribution: Alpaca Labs",
-		  icon_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/example/BuildKit/Icon/",
-		  build_dir: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/spec/temp/",
+		  icon_dir: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit/Icon/",
+		  build_dir: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/spec/temp/",
 		},
 
 		preferences: {
-		  reports: "/Users/adamwaite/iOS/Lib/BuildKit/iOS-Build-Kit/spec/temp/",
+		  reports: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/spec/temp/",
 		}
 		
 	}

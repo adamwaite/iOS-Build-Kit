@@ -26,6 +26,7 @@ module BuildKit
 
       def assert_requirements
         BuildKit::Utilities::Assertions.assert_required_config [:app_name, :workspace, :sdk, :build_configuration, :build_dir, :scheme], @runner
+        BuildKit::Utilities::Assertions.assert_files_exist [@config.absolute_build_dir, @config.workspace]
       end
 
       def create_build_directory
