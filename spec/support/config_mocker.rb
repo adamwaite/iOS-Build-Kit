@@ -47,6 +47,11 @@ class Hash
   	self
   end
 
+  def modify_preference! key, value
+    self[:preferences][key] = value
+    self
+  end
+
 end
 
 def mock_runner config_file_data
