@@ -1,7 +1,5 @@
 require_relative 'spec_helper'
 
-require 'pry'
-
 describe "report generation" do
 
   let(:run_task) { :increment_version.to_s }

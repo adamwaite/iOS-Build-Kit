@@ -234,14 +234,12 @@ An example workspace has been included in the repo if you want to try it out. Yo
 
 Lots of plans for BuildKit:
 
-- Cover with RSpec specs (in progress).
-- Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen) (next up).
+- Create a build task module to enable artefact distribution by wrapping [Shenzhen](https://github.com/nomad/shenzhen) (in progress).
+- Add a generator for config files (next up).
 - Add a means to allow custom task modules to be added to the process.
 - Add a task to email build reports.
 - Make `decorate_icon` compatible with Xcode 5 asset catalogues.
-- Add a generator for config files.
 - Add some colour to the output.
-- Beautify the reports.
 
 ## Contributing
 
