@@ -27,6 +27,11 @@ class Hash
 		self
   end
 
+  def modify_config! key, value
+    self[:configuration][key] = value
+    self
+  end
+
   def remove_config! key
   	self[:configuration][key] = nil
   	self

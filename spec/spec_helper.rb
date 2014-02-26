@@ -14,7 +14,13 @@ RSpec.configure do |config|
 	config.formatter = :documentation
 	config.fail_fast = true
 
-	config.before(:each) { create_spec_temp_dir }
-	config.after(:each) { destroy_spec_temp_dir }
+	config.before(:each) do
+    create_spec_temp_dir
+    clone_and_modify_icons
+  end
+
+	config.after(:each) do 
+    destroy_spec_temp_dir
+  end
 
 end

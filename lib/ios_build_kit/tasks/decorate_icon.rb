@@ -95,7 +95,7 @@ module BuildKit
 
       def complete_task!
         message = "Icons have been decorated with #{version_number_to_draw}. They are here: " + @decorated_icons.join(",")
-        @runner.task_completed! :decorate_icons, message, message 
+        @runner.task_completed! :decorate_icon, message, message 
       end
 
     end
