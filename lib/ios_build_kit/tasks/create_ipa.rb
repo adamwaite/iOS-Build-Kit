@@ -43,7 +43,7 @@ module BuildKit
           if @runner.has_completed_task? :increment_version
             name << @runner.store[:new_version_number][:full]
           else
-            name << BuildKit::Utilities::VersionNumber.plist_version_number[:full]
+            name << BuildKit::Utilities::VersionNumber.plist_version_number(@config.info_plist)[:full]
           end
         end
         name << "-"
