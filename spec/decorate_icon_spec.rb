@@ -7,7 +7,8 @@ describe "decorate_icon task" do
 		context "missing configuration" do
 
 			context "icon_dir" do
-				pending "raise exception"	
+				let(:runner) { mock_runner vc.enable_decorate_icon!.remove_config! :icon_dir }
+				specify { expect { runner.run_tasks! }.to raise_error }
 			end
 
 		end
@@ -15,7 +16,8 @@ describe "decorate_icon task" do
 		context "non-existent files" do
 
 			context "icon_dir" do
-				pending "raise exception"	
+				let(:runner) { mock_runner vc.enable_decorate_icon!.invalid_location! :icon_dir }
+				specify { expect { runner.run_tasks! }.to raise_error }
 			end
 
 		end
@@ -27,8 +29,10 @@ describe "decorate_icon task" do
 	end
 
 	describe "task completion" do
-		pending "runner.tasks[:completed].include?(:decorate_icon).should be_true"
-		pending "runner.outputs[:decorate_icon].should_not be_nil"
+		let(:runner) { mock_runner vc.enable_decorate_icon! }
+		before { runner.run_tasks! }
+		specify { runner.tasks[:completed].include?(:decorate_icon).should be_true }
+		specify { runner.outputs[:decorate_icon].should_not be_nil }
 	end
 
 end

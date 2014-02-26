@@ -28,7 +28,7 @@
   :sdk: "iphoneos"
   :provisioning_profile: "Provisioning/BuildKitTest.mobileprovision"
   :code_sign: "iPhone Distribution: Alpaca Labs"
-  :icon_dir: "BuildKit/Icon"
+  :icon_dir: "BuildKit/Icon/"
   :build_dir: "Builds"
 
 :preferences:

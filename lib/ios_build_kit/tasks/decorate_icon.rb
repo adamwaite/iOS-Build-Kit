@@ -1,7 +1,7 @@
 module BuildKit
   
   require 'rmagick'
-    
+
   module Tasks
 
     def self.decorate_icon runner, task_opts
@@ -42,7 +42,7 @@ module BuildKit
 
       def icon_files_to_decorate
         to_decorate = []
-        Dir.glob("#{runner.config[:icon_dir]}*.png").each do |filename|
+        Dir.glob("#{@config.icon_dir}/*.png").each do |filename|
           next if filename.include? "Decorated"
           to_decorate << filename
         end
@@ -58,7 +58,6 @@ module BuildKit
       def create_decorated_version_of icon_path
         original = Magick::ImageList.new icon_path
         decorated_icon = original.copy
-
         icon_dimension = original.rows
 
         background = Magick::Draw.new
@@ -66,7 +65,7 @@ module BuildKit
         background.rectangle(0, icon_dimension - (icon_dimension * 0.225), icon_dimension, icon_dimension)
         background.draw decorated_icon
 
-        annotation_params = { 
+        annotation_params = {
           gravity: Magick::SouthGravity, 
           pointsize: icon_dimension * 0.11 , 
           stroke: 'transparent', 
