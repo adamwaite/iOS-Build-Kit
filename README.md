@@ -243,7 +243,7 @@ Lots of plans for BuildKit:
 
 ## Contributing
 
-All pull requests welcome! Please ensure that all RSpecs specs pass, and that any new features are covered with specs. Please keep the README up to date.
+All pull requests welcome! Please ensure that all existing RSpec specs pass, and that any new features are covered with specs. Please keep the README up to date.
 
 ## Contact
 
