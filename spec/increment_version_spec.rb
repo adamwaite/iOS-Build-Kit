@@ -3,25 +3,18 @@ require_relative 'spec_helper'
 describe "xcode_build task" do
   
 	describe "invalid config handling" do
-	  
 		context "missing configuration" do
-
 			context "info_plist" do
 				let(:runner) { mock_runner vc.enable_increment_version!.remove_config! :info_plist }
 				specify { expect { runner.run_tasks! }.to raise_error }
 			end
-
 		end
-		
 		context "non-existent files" do
-
 			context "info_plist" do
 				let(:runner) { mock_runner vc.enable_increment_version!.missing_file! :info_plist }
 				specify { expect { runner.run_tasks! }.to raise_error }
 			end
-
 		end
-
 	end
 
 	describe "plist reading" do

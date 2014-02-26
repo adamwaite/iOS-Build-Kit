@@ -3,40 +3,39 @@ require_relative 'spec_helper'
 describe "run_tests task" do
   
 	describe "invalid config handling" do
-	  
 		context "missing configuration" do
-			
 			context "workspace" do
-				pending "raise exception"
+				let(:runner) { mock_runner vc.enable_run_tests!.remove_config! :workspace }
+				specify { expect { runner.run_tasks! }.to raise_error }
 			end
-
 			context "scheme" do
-				pending "raise exception"
+				let(:runner) { mock_runner vc.enable_run_tests!.remove_config! :scheme }
+				specify { expect { runner.run_tasks! }.to raise_error }
 			end
-
 		end
-		
 		context "non-existent files" do
-
 			context "workspace" do
-				pending "raise exception"	
+				let(:runner) { mock_runner vc.enable_run_tests!.invalid_location! :workspace }
+				specify { expect { runner.run_tasks! }.to raise_error }
 			end
-
 		end
-
 	end
 
 	describe "passing tests" do
-	  pending "runner.store[:tests_passed].should be_true"
+	  let(:runner) { mock_runner vc.enable_run_tests! }
+	  before { runner.run_tasks! }
+	  specify { runner.store[:tests_passed].should be_true }
 	end
 
 	describe "failing tests" do
-	  pending "runner.store[:tests_passed].should_not be_true <- need to create a failing test target. compare YES to NO or something"
+	  pending "Create a failing test target, compare YES to NO or something"
 	end
 
 	describe "task completion" do
-		pending "runner.tasks[:completed].include?(:run_tests).should be_true"
-		pending "runner.outputs[:run_tests].should_not be_nil"
+		let(:runner) { mock_runner vc.enable_run_tests! }
+	  before { runner.run_tasks! }
+		specify { runner.tasks[:completed].include?(:run_tests).should be_true }
+		specify { runner.outputs[:run_tests].should_not be_nil }
 	end
 
 end
