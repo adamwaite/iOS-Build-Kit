@@ -228,7 +228,7 @@ Leaving the `:reports:` preference blank will skip report generation.
 
 ## Examples
 
-An example workspace has been included in the repo if you want to try it out. You'll need to change the paths in the `build_config.yml` configuration file first and run a `pod install`.
+An example workspace has been included in the repo if you want to try it out. You may need to change the paths in the `build_config.yml` configuration file first and run a `pod install`.
 
 ## Roadmap
 
@@ -243,12 +243,7 @@ Lots of plans for BuildKit:
 
 ## Contributing
 
-All pull requests welcome! Please update the README with any new features.
-
-### Contributors
-
-- [@adamwaite](https://github.com/adamwaite/)
-- [@garnett](https://github.com/garnett)
+All pull requests welcome! Please ensure that all RSpecs specs pass, and that any new features are covered with specs. Please keep the README up to date.
 
 ## Contact
 
