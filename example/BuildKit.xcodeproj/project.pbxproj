@@ -42,6 +42,7 @@
 		6EB5C9E0F82A4CCF908F17F1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6F2BF8B24D89438395E8F488 /* libPods-BuildKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BuildKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		857954DDE8E4449A83BA73E3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9919D97518C5E1A900D1CDFE /* BuildKitTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BuildKitTests copy-Info.plist"; path = "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKitTests copy-Info.plist"; sourceTree = "<absolute>"; };
 		9945AD0E18A95593002E2565 /* Icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icon; sourceTree = "<group>"; };
 		9992C79518A3F02F0078F6B1 /* BuildKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuildKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9992C79818A3F02F0078F6B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -100,6 +101,7 @@
 				9992C79618A3F02F0078F6B1 /* Products */,
 				6EB5C9E0F82A4CCF908F17F1 /* Pods.xcconfig */,
 				69A18BEEE99E4939AEB0FF4F /* Pods-BuildKitTests.xcconfig */,
+				9919D97518C5E1A900D1CDFE /* BuildKitTests copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

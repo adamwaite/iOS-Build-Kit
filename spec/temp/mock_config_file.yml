@@ -1,0 +1,38 @@
+---
+:tasks:
+  :increment_version:
+    :run: true
+    :options: 
+  :decorate_icon:
+    :run: false
+    :options: 
+  :xcode_build:
+    :run: true
+    :options:
+      :log: false
+  :run_tests:
+    :run: false
+    :options:
+      :log: false
+  :create_ipa:
+    :run: true
+    :options:
+      :log: false
+  :distribute:
+    :run: true
+    :options:
+      :platform: hockeyapp
+      :token: ab1234567891a123a1234567abcde12
+:configuration:
+  :app_name: BuildKit
+  :workspace: /Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit.xcworkspace
+  :info_plist: /Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit/BuildKit-Info.plist
+  :build_configuration: Release
+  :scheme: BuildKit
+  :sdk: iphoneos
+  :provisioning_profile: /Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/Provisioning/BuildKitTest.mobileprovision
+  :code_sign: 'iPhone Distribution: Alpaca Labs'
+  :icon_dir: /Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit/Icon/
+  :build_dir: /Users/adamwaite/iOS/Lib/iOS-Build-Kit/spec/temp/
+:preferences:
+  :reports: /Users/adamwaite/iOS/Lib/iOS-Build-Kit/spec/temp/

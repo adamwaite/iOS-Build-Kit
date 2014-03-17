@@ -27,6 +27,11 @@ class Hash
 		self
   end
 
+  def enable_distribute!
+    self[:tasks][:distribute][:run] = true
+    self
+  end
+
   def modify_config! key, value
     self[:configuration][key] = value
     self
@@ -45,6 +50,11 @@ class Hash
   def invalid_location! key
   	self[:configuration][key] = "/path/to/nowhere/"
   	self
+  end
+
+  def modify_task_option! task, key, value
+    self[:tasks][task][:options][key] = value
+    self
   end
 
   def modify_preference! key, value
@@ -92,7 +102,15 @@ def valid_config_file_data
 			create_ipa: {
 				run: false,
 				options: { log: false }	
-			}
+			},
+
+      distribute: {
+        run: false,
+        options: {
+          platform: "hockeyapp",
+          token: "ab1234567891a123a1234567abcde12"
+        }
+      }
 
 		},
 		
