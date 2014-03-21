@@ -23,7 +23,7 @@ BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit)
 
 ## Installation
 
-After the requirments have been met, BuildKit can be installed with:
+After the requirements have been met, BuildKit can be installed with:
 
 `gem install ios_build_kit`
 
