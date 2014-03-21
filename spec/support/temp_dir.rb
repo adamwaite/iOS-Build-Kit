@@ -5,7 +5,7 @@ def create_spec_temp_dir
 end
 
 def destroy_spec_temp_dir
-	#FileUtils.rm_rf temp_dir_path
+  FileUtils.rm_rf temp_dir_path
 end
 
 def temp_dir_path

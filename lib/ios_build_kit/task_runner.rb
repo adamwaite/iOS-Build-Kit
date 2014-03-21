@@ -21,10 +21,10 @@ module BuildKit
         @tasks[:raw].each do |task_name, task_opts|
           if task_opts[:run]
             @tasks[:running] = task_name
-            BuildKit::Utilities::Console.header_msg "Running Task: #{task_name}"
+            BuildKit::Utilities::Console.info_msg "Running Task: #{task_name}"
             BuildKit::Tasks.send task_name, self, task_opts[:options]
           else
-            BuildKit::Utilities::Console.header_msg "Skipping Task: #{task_name}"
+            BuildKit::Utilities::Console.warning_msg "Skipping Task: #{task_name}"
           end
         end
         all_tasks_completed
@@ -71,10 +71,10 @@ module BuildKit
             build_report = BuildKit::Utilities::Reporter::create_report self
             BuildKit::Utilities::Console.success_msg "BuildKit run report created at: #{build_report}"
           else
-            puts "Warning: Report not created. Invalid directory specified: #{@preferences.reports}"
+            BuildKit::Utilities::Console.warning_msg "Warning: Report not created. Invalid directory specified: #{@preferences.reports}"
           end
         end
-        BuildKit::Utilities::Console.success_msg "\n😃  BuildKit Run Completed! Ran #{@tasks[:completed].count} tasks successfully!\n\n"
+        BuildKit::Utilities::Console.success_msg "😃  BuildKit Run Completed! Ran #{@tasks[:completed].count} tasks successfully! 😃"
       end
 
     end

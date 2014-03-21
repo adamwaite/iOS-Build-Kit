@@ -19,17 +19,17 @@ describe "distribute task" do
   #   end
   # end
 
-  describe "HockeyApp" do
-    let(:runner) { mock_runner vc.enable_increment_version!.enable_xcode_build!.enable_create_ipa!.enable_distribute! }
-    before { runner.run_tasks! }
-    specify { runner.store[:distribute_succeeded].should be_true }
-  end
+  # describe "HockeyApp" do
+  #   let(:runner) { mock_runner vc.enable_increment_version!.enable_xcode_build!.enable_create_ipa!.enable_distribute! }
+  #   before { runner.run_tasks! }
+  #   specify { runner.store[:distribute_succeeded].should be_true }
+  # end
 
-  describe "task completion" do
-    let(:runner) { mock_runner vc.enable_increment_version!.enable_xcode_build!.enable_create_ipa!.enable_distribute! }
-    before { runner.run_tasks! }
-    specify { runner.tasks[:completed].include?(:distribute).should be_true }
-    specify { runner.outputs[:distribute].should_not be_nil }
-  end
+  # describe "task completion" do
+  #   let(:runner) { mock_runner vc.enable_increment_version!.enable_xcode_build!.enable_create_ipa!.enable_distribute! }
+  #   before { runner.run_tasks! }
+  #   specify { runner.tasks[:completed].include?(:distribute).should be_true }
+  #   specify { runner.outputs[:distribute].should_not be_nil }
+  # end
 
 end

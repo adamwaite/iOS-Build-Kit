@@ -1,5 +1,4 @@
-iOS BuildKit
-===
+![header](resources/header.png)
 
 BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
