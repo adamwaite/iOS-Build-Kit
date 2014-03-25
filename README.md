@@ -12,8 +12,6 @@ Bundled build tasks include:
 
 BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit) with an executable that can be launched either in a continuous integration server environment or on your development machine. The process is configured with a simple YAML file that describes the tasks to run and your project-specific options. This means that you can tailor the build process to meet your requirements.
 
-*Note: This repository was previosly known as Xcode-Project. It previously contained a project generator as well as a less developed build toolkit. The generator was removed due to the rapid advances in iOS technology. If you would like to continue using the previous version it's available [here](https://github.com/adamwaite/iOS-Build-Kit/releases).*
-
 ## Requirements
 
 - **Ruby > 2.0**: BuildKit is written and run with Ruby, you'll need a version higher than 2.0 because of the modern syntax. Check your Ruby version with `ruby -v`. [RVM](http://rvm.io/) makes it easy should you need to update.
