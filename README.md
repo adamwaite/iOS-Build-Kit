@@ -1,6 +1,4 @@
-![header](resources/header.png)
 
-![demo-vid](resources/demo.mp4.gif)
 
 BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
@@ -146,8 +144,6 @@ Requires configuration:
 
 Duplicates your app icon files and renders the version number on top (incremented with `increment_version` or not).
 
-![decorate_icon](resources/decorate_icon.png)
-
 **Decorate icon requires some convention for optimal usage**:
 
 1. The app icon files should be contained in a dedicated directory of their own. 
@@ -193,9 +189,7 @@ Requires configuration:
 
 ### run_tests
 
-Runs unit tests.
-
-![run_tests](resources/run_tests.png)
+Runs unit tests. XCTest, [Kiwi](https://github.com/allending/Kiwi) and [Specta/Expecta](https://github.com/specta/specta) are all supported
 
 Options:
 - `log`: logs the output to the console
