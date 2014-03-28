@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ios_build_kit (0.0.5)
+    ios_build_kit (0.0.6)
       commander (~> 4.1)
       json (~> 1.8)
       nomad-cli (~> 0.0.2)
