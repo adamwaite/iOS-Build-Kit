@@ -15,7 +15,7 @@ BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit)
 
 *Version: 0.0.6*
 
-## Requirements
+## Dependencies
 
 - *Ruby > 2.0*: BuildKit is written and run with Ruby, you'll need a version higher than 2.0 because of the modern syntax. Check your Ruby version with `ruby -v`. [RVM](http://rvm.io/) makes it easy should you need to update.
 - *Xcode command line tools*: `xcode-select --install`
@@ -24,7 +24,7 @@ BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit)
 
 ## Installation
 
-After the requirements have been met, BuildKit can be installed with:
+After the dependencies have been installed, BuildKit can be installed with:
 
 `gem install ios_build_kit`
 
@@ -189,6 +189,8 @@ Requires configuration:
 - `:build_configuration:`
 - `:build_dir:`
 - `:scheme:`
+
+*Note: Special thanks to [@supermarin](https://github.com/supermarin) for making the output beautiful with his [xcpretty](https://github.com/supermarin/xcpretty) gem (same for `run_tests`)*
 
 ### run_tests
 
