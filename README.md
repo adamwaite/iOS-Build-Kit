@@ -1,4 +1,5 @@
-
+![header](resources/header.png)
+![demo-vid](resources/demo.mp4.gif)
 
 BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
