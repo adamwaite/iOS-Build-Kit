@@ -145,6 +145,8 @@ Requires configuration:
 
 Duplicates your app icon files and renders the version number on top (incremented with `increment_version` or not).
 
+![decorate_icon-example](resources/decorate_icon.png)
+
 **Decorate icon requires some convention for optimal usage**:
 
 1. The app icon files should be contained in a dedicated directory of their own. 
