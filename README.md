@@ -1,5 +1,4 @@
 ![header](resources/header.png)
-![demo-vid](resources/demo.mp4.gif)
 
 BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
@@ -14,6 +13,10 @@ Bundled build tasks include:
 BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit) with an executable that can be launched either in a continuous integration server environment or on your development machine. The process is configured with a simple YAML file that describes the tasks to run and your project-specific options. This means that you can tailor the build process to meet your requirements.
 
 *Version: 0.0.6*
+
+## Demo
+
+![demo-vid](resources/demo.mp4.gif)
 
 ## Dependencies
 
