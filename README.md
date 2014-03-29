@@ -14,8 +14,6 @@ BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit)
 
 *Version: 0.0.6*
 
-## Demo
-
 ![demo-vid](resources/demo.mp4.gif)
 
 ## Dependencies
