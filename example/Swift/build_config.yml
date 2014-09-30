@@ -1,0 +1,35 @@
+:tasks:
+  :increment_version:
+    :run: true
+    :options:
+  :decorate_icon:
+    :run: true
+    :options:
+  :xcode_build:
+    :run: true
+    :options:
+      :log: true
+      :clean: true
+  :run_tests:
+    :run: true
+    :options:
+      :log: true
+  :create_ipa:
+    :run: true
+    :options:
+      :log: false
+
+:configuration:
+  :app_name: "BuildKit"
+  :workspace: "BuildKit.xcworkspace"
+  :info_plist: "BuildKit/Info.plist"
+  :build_configuration: "Release"
+  :scheme: "BuildKit"
+  :sdk: "iphoneos"
+  :provisioning_profile: "Provisioning/buildkitexample.mobileprovision"
+  :code_sign: "iPhone Distribution: Adam Waite"
+  :icon_dir: "BuildKit/Icon/"
+  :build_dir: "build"
+
+:preferences:
+  :reports: "Reports"
