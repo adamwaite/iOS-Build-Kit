@@ -1,6 +1,6 @@
 = ios_build_kit
 
-See https://github.com/adamwaite/iOS-Build-Kit
+https://github.com/adamwaite/iOS-Build-Kit
 
 Created by @adamwaite.
 

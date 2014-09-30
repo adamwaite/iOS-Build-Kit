@@ -12,6 +12,8 @@ Bundled build tasks include:
 
 BuildKit is distributed as a [Ruby gem](https://rubygems.org/gems/ios_build_kit) with an executable that can be launched either in a continuous integration server environment or on your development machine. The process is configured with a simple YAML file that describes the tasks to run and your project-specific options. This means that you can tailor the build process to meet your requirements.
 
+It's compatible with the iOS7 and iOS8 SDK with Objective-C and Swift projects.
+
 *Version: 0.0.6*
 
 ![demo-vid](resources/demo.mp4.gif)
