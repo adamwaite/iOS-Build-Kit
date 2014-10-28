@@ -22,6 +22,7 @@ module BuildKit
 
       def run!
         decorate_icons!
+        update_plist_icons!
         complete_task!
       end
 
@@ -49,10 +50,30 @@ module BuildKit
         to_decorate
       end
 
+      def decorated_icon_path icon_path
+        original_img_filename = File.basename icon_path
+        new_img_filename = "Decorated-" + original_img_filename
+        icon_path.gsub(original_img_filename, new_img_filename)
+      end
+
       def decorate_icons!
         icon_files_to_decorate.each do |img_path|
           @decorated_icons << create_decorated_version_of(img_path)
         end
+      end
+
+      def update_plist_icons!
+        backup_plist = @runner.config.info_plist.gsub(/(\.plist)$/i, '.orig\1')
+        FileUtils.remove_file backup_plist, true
+        FileUtils.cp @runner.config.info_plist, backup_plist
+        @runner.store[:backup_plist] = backup_plist
+
+        icons = BuildKit::Utilities::PlistPal.read_array_value_in_plist(
+          @runner.config.info_plist, "CFBundleIcons:CFBundlePrimaryIcon:CFBundleIconFiles")
+
+        decorated_icons = icons.map{|icon| decorated_icon_path(icon)}
+        BuildKit::Utilities::PlistPal.write_array_value_in_plist(
+          @runner.config.info_plist, "CFBundleIcons:CFBundlePrimaryIcon:CFBundleIconFiles", decorated_icons)
       end
 
       def create_decorated_version_of icon_path
@@ -84,10 +105,7 @@ module BuildKit
           self.font_weight = annotation_params[:font_weight]
         end
 
-        original_img_filename = File.basename icon_path
-        new_img_filename = "Decorated-" + original_img_filename
-        new_img_full_path = icon_path.gsub(original_img_filename, new_img_filename)
-
+        new_img_full_path = decorated_icon_path(icon_path)
         decorated_icon.write(new_img_full_path)
 
         new_img_full_path

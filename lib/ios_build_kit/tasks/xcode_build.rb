@@ -19,6 +19,7 @@ module BuildKit
         run_command! "clean" if @task_options[:clean]
         run_command! "build"
         create_build_directory unless File.exists?(@config.absolute_build_dir)
+        cleanup_build_assets!
         complete_task!
       end
 
@@ -55,6 +56,13 @@ module BuildKit
 
       def build_succeeded?
         @output.include? "EXIT CODE: 0"
+      end
+
+      def cleanup_build_assets!
+        if @runner.has_completed_task? :decorate_icon
+          backup_plist = @runner.store[:backup_plist]
+          FileUtils.mv backup_plist, @runner.config.info_plist, :force => true
+        end
       end
 
       def complete_task!
