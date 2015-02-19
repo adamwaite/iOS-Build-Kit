@@ -1,4 +1,4 @@
-![header](resources/header.png)
+# iOS BuildKit
 
 BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
@@ -49,7 +49,7 @@ buildkit your-config-file.yml
 
 The configuration file describes three things:
 
-1. Task modules to run (and task-specific options)  
+1. Task modules to run (and task-specific options)
 2. Project configuration
 3. User preferences
 
@@ -99,8 +99,8 @@ The `:tasks:` symbol is used to define what tasks you would like your process to
 
 The tasks will be run in the order that they appear in the list. It's recommended to follow the order shown in the example as they've been ordered to provide the best value to the process. In the example:
 1. The build version is incremented with `increment_version`
-2. The newly incremented version is rendered on the app icon with `decorate_icon` 
-3. Lastly `xcode_build` and `create_ipa` are run to build and create an ipa, which if installed on a device, will have the version number overlayed on the icon. 
+2. The newly incremented version is rendered on the app icon with `decorate_icon`
+3. Lastly `xcode_build` and `create_ipa` are run to build and create an ipa, which if installed on a device, will have the version number overlayed on the icon.
 
 Anything passed with the `:options:` symbol will be provided as an option. For example, taking the example configuration file above the `:log:` option on the `run_tests` task is set to `true` so the test output will be printed to the CLI.
 
@@ -152,8 +152,8 @@ Duplicates your app icon files and renders the version number on top (incremente
 
 **Decorate icon requires some convention for optimal usage**:
 
-1. The app icon files should be contained in a dedicated directory of their own. 
-2. Drop the icon directory in to Xcode as a folder reference rather than a group. 
+1. The app icon files should be contained in a dedicated directory of their own.
+2. Drop the icon directory in to Xcode as a folder reference rather than a group.
 3. Set the icon files in your Info-plist as:
 
 ```
