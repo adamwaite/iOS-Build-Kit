@@ -244,11 +244,19 @@ Lots of plans for BuildKit:
 
 ## Contributing
 
-All pull requests welcome! Please ensure that all existing RSpec specs pass, and that any new features are covered with specs. Please keep the README up to date.
+All pull requests welcome! Please ensure that all existing RSpec specs pass, and that any new features are covered with specs. Please keep the README up to date. Run specs from the root directory with `rspec spec`.
 
 ## Contact
 
 [@adamwaite](https://twitter.com/AdamWaite)
+
+## Build Errors
+
+And finally, a list of cryptic build error annoyances and how to deal with them:
+
+- [ResourceRules.plist: cannot read resources](https://stackoverflow.com/questions/26497863/xcode-6-1-error-while-building-ipa/26499526#26499526)
+
+- [codesign failed with exit code 1](https://stackoverflow.com/questions/26497863/xcode-6-1-error-while-building-ipa/26499526#26499526)
 
 ## License
 

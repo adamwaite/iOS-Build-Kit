@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5FBF9694-6FEF-4A9E-B74A-4964F93F2237</string>
+	<string>758D773A-55F0-4BBD-BF46-111DA10CABFA</string>
 	<key>IDESourceControlProjectName</key>
 	<string>BuildKit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>github.com:adamwaite/iOS-Build-Kit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>example/Swift/BuildKit.xcworkspace</string>
+	<string>example/Objective-C/BuildKit.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3D8F446FD127C8AE3F41148CC79B404DFB0EA433</key>
-		<string>../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:adamwaite/iOS-Build-Kit.git</string>

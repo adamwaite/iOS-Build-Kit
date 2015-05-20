@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3D8F446FD127C8AE3F41148CC79B404DFB0EA433</key>
-		<string>ssh://github.com/adamwaite/iOS-Build-Kit.git</string>
+		<string>github.com:adamwaite/iOS-Build-Kit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>example/BuildKit.xcworkspace</string>
+	<string>example/Objective-C/BuildKit.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3D8F446FD127C8AE3F41148CC79B404DFB0EA433</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/adamwaite/iOS-Build-Kit.git</string>
+	<string>github.com:adamwaite/iOS-Build-Kit.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

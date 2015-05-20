@@ -1,12 +1,12 @@
 module BuildKit
-  
+
   module Tasks
 
     def self.create_ipa runner, task_opts
       task = CreateIPATask.new({ runner: runner, opts: task_opts })
       task.run!
     end
-      
+
     private
 
   class CreateIPATask < BuildKitTask
@@ -33,7 +33,7 @@ module BuildKit
       end
 
       def warn_about_missing_plist_config
-        BuildKit.warning_msg "Provide the :info_plist option in the config file to include the version number in the ipa file name" 
+        BuildKit.warning_msg "Provide the :info_plist option in the config file to include the version number in the ipa file name"
       end
 
       def build_artefact_filename!
@@ -64,11 +64,11 @@ module BuildKit
       def build_command
         workspace_arg = "-workspace \"#{@config.workspace}\""
         sdk_arg = "-sdk #{@config.sdk}"
-        build_file_arg = "-v \"#{File.join(@config.absolute_build_dir, @config.app_name)}.app\"" 
-        output_file_arg = "-o \"#{artefact_full_path}\"" 
-        code_sign_arg = "--sign #{@config.code_sign}"
+        build_file_arg = "-v \"#{File.join(@config.absolute_build_dir, @config.app_name)}.app\""
+        output_file_arg = "-o \"#{artefact_full_path}\""
         provisioning_arg = "--embed \"#{@config.provisioning_profile}\""
-        "xcrun #{sdk_arg} PackageApplication #{build_file_arg} #{output_file_arg} #{provisioning_arg}"
+        code_sign_arg = "--sign #{@config.code_sign}"
+        "xcrun #{sdk_arg} PackageApplication #{build_file_arg} #{output_file_arg} #{provisioning_arg} #{code_sign_arg}"
       end
 
       def run_command!
@@ -84,11 +84,11 @@ module BuildKit
       def complete_task!
         runner.store[:artefact_created] = artefact_full_path if ipa_created_successfully?
         message = (ipa_created_successfully?) ? "create_ipa completed, ipa at: #{artefact_full_path}" : "create_ipa task completed but the ipa was not created"
-        runner.task_completed! :create_ipa, message, @output 
+        runner.task_completed! :create_ipa, message, @output
       end
 
     end
-      
+
   end
-  
+
 end

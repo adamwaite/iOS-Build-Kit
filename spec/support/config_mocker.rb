@@ -1,27 +1,27 @@
 require 'yaml'
 
 class Hash
-	
+
 	def enable_increment_version!
 		self[:tasks][:increment_version][:run] = true
 		self
   end
-  
+
   def enable_decorate_icon!
 		self[:tasks][:decorate_icon][:run] = true
 		self
   end
-  
+
   def enable_xcode_build!
 		self[:tasks][:xcode_build][:run] = true
 		self
   end
-  
+
   def enable_run_tests!
 		self[:tasks][:run_tests][:run] = true
 		self
   end
-  
+
   def enable_create_ipa!
 		self[:tasks][:create_ipa][:run] = true
 		self
@@ -43,12 +43,12 @@ class Hash
   end
 
   def missing_file! key
-  	self[:configuration][key] = "/path/to/nowhere/missing.file"
+  	self[:configuration][key] = '/path/to/nowhere/missing.file'
   	self
   end
 
   def invalid_location! key
-  	self[:configuration][key] = "/path/to/nowhere/"
+  	self[:configuration][key] = '/path/to/nowhere/'
   	self
   end
 
@@ -75,68 +75,68 @@ def vc
 end
 
 def valid_config_file_data
-	
+
 	{
 		tasks: {
 
 			increment_version: {
 				run: false,
-				options: nil	
+				options: nil
 			},
 
 			decorate_icon: {
 				run: false,
-				options: nil	
+				options: nil
 			},
 
 			xcode_build: {
 				run: false,
-				options: { log: false }	
+				options: { log: false }
 			},
 
 			run_tests: {
 				run: false,
-				options: { log: false }	
+				options: { log: false }
 			},
 
 			create_ipa: {
 				run: false,
-				options: { log: false }	
+				options: { log: false }
 			},
 
       distribute: {
         run: false,
         options: {
-          platform: "hockeyapp",
-          token: "ab1234567891a123a1234567abcde12"
+          platform: 'hockeyapp',
+          token: 'ab1234567891a123a1234567abcde12'
         }
       }
 
 		},
-		
+
 		configuration: {
-			app_name: "BuildKit",
-		  workspace: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit.xcworkspace",
-		  info_plist: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit/BuildKit-Info.plist",
-		  build_configuration: "Release",
-		  scheme: "BuildKit",
-		  sdk: "iphoneos",
-		  provisioning_profile: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/Provisioning/BuildKitTest.mobileprovision",
-		  code_sign: "iPhone Distribution: Alpaca Labs",
-		  icon_dir: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/example/BuildKit/Icon/",
-		  build_dir: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/spec/temp/",
+			app_name: 'BuildKit',
+		  workspace: 'example/Objective-C/BuildKit.xcworkspace',
+		  info_plist: 'example/Objective-C/BuildKit/BuildKit-Info.plist',
+		  build_configuration: 'Release',
+		  scheme: 'BuildKit',
+		  sdk: 'iphoneos',
+		  provisioning_profile: 'example/Objective-C/Provisioning/buildkitdist.mobileprovision',
+		  code_sign: 'PNRPD9DG72',
+		  icon_dir: 'example/Objective-C/BuildKit/Icon/',
+		  build_dir: 'spec/temp/',
 		},
 
 		preferences: {
-		  reports: "/Users/adamwaite/iOS/Lib/iOS-Build-Kit/spec/temp/",
+		  reports: 'spec/temp/',
 		}
-		
+
 	}
 
 end
 
 def create_mock_config_file hash
-	path = "spec/temp/mock_config_file.yml"
-	File.open("spec/temp/mock_config_file.yml", 'w') { |f| f.write hash.to_yaml }
+	path = 'spec/temp/mock_config_file.yml'
+	File.open('spec/temp/mock_config_file.yml', 'w') { |f| f.write hash.to_yaml }
 	path
 end

@@ -465,13 +465,14 @@
 			baseConfigurationReference = 6EB5C9E0F82A4CCF908F17F1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Waite (88RD3LRDN9)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildKit/BuildKit-Prefix.pch";
 				INFOPLIST_FILE = "BuildKit/BuildKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "770fa0f2-32cd-4d2a-ba08-ab9c49686388";
+				PROVISIONING_PROFILE = "29a0e0b3-9a69-4616-9a4f-14432ad8dd39";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -482,13 +483,14 @@
 			baseConfigurationReference = 6EB5C9E0F82A4CCF908F17F1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Adam Waite (PNRPD9DG72)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildKit/BuildKit-Prefix.pch";
 				INFOPLIST_FILE = "BuildKit/BuildKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "770fa0f2-32cd-4d2a-ba08-ab9c49686388";
+				PROVISIONING_PROFILE = "506d176e-6f1f-4485-ab92-a73809d76b08";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

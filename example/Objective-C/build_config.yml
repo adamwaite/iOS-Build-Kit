@@ -26,7 +26,7 @@
   :build_configuration: "Release"
   :scheme: "BuildKit"
   :sdk: "iphoneos"
-  :provisioning_profile: "Provisioning/buildkitexample.mobileprovision"
+  :provisioning_profile: "Provisioning/buildkitdist.mobileprovision"
   :code_sign: "iPhone Distribution: Adam Waite"
   :icon_dir: "BuildKit/Icon/"
   :build_dir: "build"

@@ -343,10 +343,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Waite (88RD3LRDN9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Waite (88RD3LRDN9)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				INFOPLIST_FILE = BuildKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "770fa0f2-32cd-4d2a-ba08-ab9c49686388";
+				PROVISIONING_PROFILE = "29a0e0b3-9a69-4616-9a4f-14432ad8dd39";
 			};
 			name = Debug;
 		};
@@ -356,10 +357,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Adam Waite (PNRPD9DG72)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adam Waite (PNRPD9DG72)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				INFOPLIST_FILE = BuildKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "770fa0f2-32cd-4d2a-ba08-ab9c49686388";
+				PROVISIONING_PROFILE = "506d176e-6f1f-4485-ab92-a73809d76b08";
 			};
 			name = Release;
 		};
