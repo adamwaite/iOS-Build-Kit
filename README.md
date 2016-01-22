@@ -2,6 +2,8 @@
 
 BuildKit is a modular command line interface for automating iOS project builds. BuildKit aims to relieve you from the pain of configuring continuous integration environments and build processes.
 
+> 💀 BuildKit is no longer maintained. [Fastlane](https://fastlane.tools) does everything BuildKit does, and much more. It was useful at the time, and a lot of fun to write - thanks to all contributors.
+
 Bundled build tasks include:
 
 - Increment the build number
