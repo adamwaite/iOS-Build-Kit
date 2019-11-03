@@ -71,8 +71,8 @@ GEM
       venice
     ntlm-http (0.1.1)
     paint (0.8.7)
-    rack (1.5.2)
-    rack-protection (1.5.2)
+    rack (1.6.11)
+    rack-protection (1.5.5)
       rack
     rake (10.1.1)
     rmagick (2.13.2)
